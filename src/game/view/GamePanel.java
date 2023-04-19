@@ -56,7 +56,8 @@ public class GamePanel extends JPanel implements Runnable
 	{
 		while(gameThread != null)
 		{
-			System.out.println("The game loop is running");
+			long currentTime = System.nanoTime();
+			
 			
 			//1 update: update information such as character position
 			update();
