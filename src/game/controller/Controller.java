@@ -5,6 +5,7 @@ import game.view.GameFrame;
 public class Controller 
 {
 	private GameFrame frame;
+
 	
 	public Controller()
 	{
