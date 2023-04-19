@@ -1,6 +1,7 @@
 package game.view;
 
 import game.controller.Controller;
+import game.model.KeyHandler;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,7 +22,15 @@ public class GamePanel extends JPanel implements Runnable
 	final int screenWidth = tileSize * maxScreenCol;//768 pixels
 	final int screenHeight = tileSize * maxScreenRow;// 576 pixels
 	 
+	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;//Thread is useful for when you update something very frequently
+	
+	
+	// set player's defaut position
+	
+	int playerX = 100;
+	int playerY = 100;
+	int playerSpeed = 4;
 	
 	public GamePanel(Controller app)
 	{
@@ -30,6 +39,8 @@ public class GamePanel extends JPanel implements Runnable
 		//this.setSize(screenHeight, screenWidth);
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true); //can improve game performance?
+		this.addKeyListener(keyH);
+		this.setFocusable(true);
 		
 	}
 	
@@ -56,7 +67,22 @@ public class GamePanel extends JPanel implements Runnable
 	
 	public void update()
 	{
-		
+		if(keyH.upPressed == true)
+		{
+			playerY -= playerSpeed;
+		}
+		else if(keyH.downPressed == true)
+		{
+			playerY += playerSpeed;
+		}
+		else if(keyH.leftPressed == true)
+		{
+			playerX -= playerSpeed;
+		}
+		else if(keyH.rightPressed == true)
+		{
+			playerX += playerSpeed;
+		}
 	}
 	//built in java method
 	public void paintComponent(Graphics g)
@@ -67,7 +93,7 @@ public class GamePanel extends JPanel implements Runnable
 		
 		g2.setColor(Color.white);
 		
-		g2.fillRect(100, 100, tileSize, tileSize);
+		g2.fillRect(playerX, playerY, tileSize, tileSize);
 		
 		g2.dispose();//saves memory
 	}
