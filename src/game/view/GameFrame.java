@@ -21,8 +21,8 @@ public class GameFrame extends JFrame
 	private void setupFrame()
 	{
 		this.setContentPane(panel);
-		this.setSize(100, 100);
 		this.setResizable(false);
+		this.setSize(768, 576);
 		this.setTitle("2D game Adventure :)");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
