@@ -69,7 +69,7 @@ public class GamePanel extends JPanel implements Runnable
 		
 		g2.fillRect(100, 100, tileSize, tileSize);
 		
-		g2.dispose();//saves memeory
+		g2.dispose();//saves memory
 	}
 
 }
