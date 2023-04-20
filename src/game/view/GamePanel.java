@@ -80,6 +80,7 @@ public class GamePanel extends JPanel implements Runnable
 			
 			delta += (currentTime - lastTime) / drawInterval;
 			timer += (currentTime - lastTime);
+			lastTime = currentTime;
 			
 			if(delta >= 1)
 			{
@@ -89,7 +90,7 @@ public class GamePanel extends JPanel implements Runnable
 				drawCount++;
 			}
 			
-			if(timer > 1000000000)
+			if(timer >= 1000000000)
 			{
 				System.out.println("FPS:" + drawCount);
 				drawCount = 0;
