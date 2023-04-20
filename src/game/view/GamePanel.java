@@ -31,12 +31,6 @@ public class GamePanel extends JPanel implements Runnable
 	Player player = new Player(this,keyH);
 	
 	
-	// set player's defaut position
-	
-	int playerX = 100;
-	int playerY = 100;
-	int playerSpeed = 4;
-	
 	public GamePanel(Controller app)
 	{
 		super();
