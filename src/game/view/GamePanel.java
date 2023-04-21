@@ -5,7 +5,7 @@ import game.model.KeyHandler;
 
 
 import game.model.entity.Player;
-
+import game.model.tile.TileManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -31,7 +31,7 @@ public class GamePanel extends JPanel implements Runnable
 	int FPS = 60;
 	
 	
-
+	TileManager tileM = new TileManager(this);
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;//Thread is useful for when you update something very frequently
 	Player player = new Player(this,keyH);
@@ -108,6 +108,9 @@ public class GamePanel extends JPanel implements Runnable
 	{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
+		
+		//order is important on wich is drawn first
+		tileM.draw(g2);
 		
 		player.draw(g2);
 		
