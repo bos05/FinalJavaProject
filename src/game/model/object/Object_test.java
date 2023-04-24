@@ -1,5 +1,7 @@
 package game.model.object;
 
+import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
 public class Object_test extends SuperObject
@@ -9,7 +11,11 @@ public class Object_test extends SuperObject
 		name = "Test";
 		try
 		{
-			image = ImageIO.read(getClass().getResourceAsStream("/objects/test.png"));
+			image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_1.png"));
+		}
+		catch(IOException e)
+		{
+			e.printStackTrace();
 		}
 	}
 }

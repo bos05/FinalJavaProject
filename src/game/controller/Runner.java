@@ -1,11 +1,12 @@
 package game.controller;
 
-public class Runner 
-{	
+import game.controller.Controller;
+
+public class runner 
+{
 	public static void main (String [] args)
 	{
 		Controller app = new Controller();
 		app.start();
 	}
-
 }

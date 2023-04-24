@@ -1,6 +1,7 @@
 package game.view;
 
 import game.controller.Controller;
+import game.model.AssetSetter;
 import game.model.CollisionChecker;
 import game.model.KeyHandler;
 
@@ -41,6 +42,7 @@ public class GamePanel extends JPanel implements Runnable
 	KeyHandler keyH = new KeyHandler();
 	Thread gameThread;//Thread is useful for when you update something very frequently
 	public CollisionChecker cChecker = new CollisionChecker(this);
+	public AssetSetter aSetter = new AssetSetter(this);
 	public Player player = new Player(this,keyH);
 	public SuperObject obj[] = new SuperObject[10];
 	
@@ -52,6 +54,8 @@ public class GamePanel extends JPanel implements Runnable
 	int playerY = 100;
 	int playerSpeed = 4;
 	
+	
+	
 	public GamePanel(Controller app)
 	{
 		super();
@@ -61,7 +65,11 @@ public class GamePanel extends JPanel implements Runnable
 		this.setDoubleBuffered(true); //can improve game performance?
 		this.addKeyListener(keyH);
 		this.setFocusable(true);
-		
+	}
+	
+	public void setupGame()
+	{
+		aSetter.setObject();
 	}
 	
 	public void startGameThread()
@@ -110,6 +118,7 @@ public class GamePanel extends JPanel implements Runnable
 	public void update()
 	{
 		player.update();
+		
 	}
 	
 	public void paintComponent(Graphics g)
@@ -120,7 +129,17 @@ public class GamePanel extends JPanel implements Runnable
 		//order is important on wich is drawn first
 		tileM.draw(g2);
 		
+		for(int i = 0; i < obj.length; i++)
+		{
+			if(obj[i] != null)
+			{
+				obj[i].draw(g2, null);
+			}
+		}
+		
 		player.draw(g2);
+		
+		
 		
 		g2.dispose();
 	}
