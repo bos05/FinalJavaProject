@@ -20,7 +20,7 @@ public class TileManager
 	{
 		this.gp = gp;
 		
-		tile = new Tile[10];//10 types of tiles
+		tile = new Tile[20];//10 types of tiles
 		mapTileNum = new int[gp.maxWorldCol] [gp.maxWorldRow];
 		
 			
@@ -51,7 +51,31 @@ public class TileManager
 			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_dirt_1.png"));
 			
 			tile[6] = new Tile();
-			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/test.png"));
+			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_1.png"));
+
+			tile[7] = new Tile();
+			tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_2.png"));
+
+			tile[8] = new Tile();
+			tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_3.png"));
+
+			tile[9] = new Tile();
+			tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_4.png"));
+
+			tile[10] = new Tile();
+			tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_5.png"));
+
+			tile[11] = new Tile();
+			tile[11].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_6.png"));
+			
+			tile[12] = new Tile();
+			tile[12].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_8.png"));
+			
+			
+			
+
+			
+
 		}
 		catch(IOException e)
 		{
