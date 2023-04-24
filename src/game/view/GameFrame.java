@@ -29,6 +29,5 @@ public class GameFrame extends JFrame
 	    this.setVisible(true);
 	    
 	    panel.startGameThread();
-	    GamePanel.setupGame();
 	}
 }
