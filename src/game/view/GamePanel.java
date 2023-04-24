@@ -6,6 +6,7 @@ import game.model.KeyHandler;
 
 
 import game.model.entity.Player;
+import game.model.object.SuperObject;
 import game.model.tile.TileManager;
 
 import java.awt.Color;
@@ -41,6 +42,7 @@ public class GamePanel extends JPanel implements Runnable
 	Thread gameThread;//Thread is useful for when you update something very frequently
 	public CollisionChecker cChecker = new CollisionChecker(this);
 	public Player player = new Player(this,keyH);
+	public SuperObject obj[] = new SuperObject[10];
 	
 	
 	
