@@ -4,6 +4,7 @@ import game.view.GamePanel;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -28,6 +29,9 @@ public class Player extends Entity
 		
 		screenX = gp.screenWidth/2 - (35);
 		screenY = gp.screenHeight/2 - (55);
+		
+		solidArea = new Rectangle(8, 16, 32, 36);
+		
 		
 		setDefaultValues();
 		getPlayerImage();
@@ -71,23 +75,43 @@ public class Player extends Entity
 		
 		if(keyH.upPressed == true)
 		{
-			direction = "up";
-			worldY -= speed;
+			direction = "up";		
 		}
 		else if(keyH.downPressed == true)
 		{
 			direction= "down";
-			worldY += speed;
 		}
 		else if(keyH.leftPressed == true)
 		{
 			direction = "left";
-			worldX-= speed;
 		}
 		else if(keyH.rightPressed == true)
 		{
 			direction = "right";
-			worldX += speed;
+		}
+		
+		//CHECK TILE COLLISION
+		collisionOn = false;
+		gp.cChecker.checkTile(this);
+		
+		// IF COLISION IS FALSE, PLAYER CAN MOVE
+		if(collisionOn == false )
+		{
+			switch(direction) {
+			case "up":
+				worldY -= speed;
+				break;
+			case "down":
+				worldY += speed;
+				break;
+			case "left":
+				worldX-= speed;
+				break;
+			case "right":
+				worldX += speed;
+				break;
+				
+			}
 		}
 		
 		//waits until spriteCounter gets to 12(12 frames) then it switches the spriteNum
