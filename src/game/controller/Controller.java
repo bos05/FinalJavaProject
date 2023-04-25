@@ -13,6 +13,9 @@ public class Controller
 	{
 		this.frame = new GameFrame(this);
 		
+
+		
+		
 	}
 	
 	public void start()

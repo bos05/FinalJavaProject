@@ -15,6 +15,7 @@ public class GameFrame extends JFrame
 		this.app = app;
 		this.panel = new GamePanel(this.app);
 
+		
 		setupFrame();
 	}
 	
@@ -28,6 +29,9 @@ public class GameFrame extends JFrame
 	    this.setLocationRelativeTo(null);
 	    this.setVisible(true);
 	    
+		
+
+		panel.setupGame();
 	    panel.startGameThread();
 	}
 }

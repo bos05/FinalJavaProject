@@ -7,11 +7,17 @@ import game.view.GamePanel;
 
 public class SuperObject 
 {
+	
 	public BufferedImage image;
 	public String name;
 	public boolean collision  = false;
 	public int worldX, worldY; 
-	
+	/**
+	 * Decides whether or not objects are on screen then
+	 * it will draw the object on screen
+	 * @param g2 Referencing Graphics2D
+	 * @param gp Referencing GamePanel
+	 */
 	public void draw(Graphics2D g2, GamePanel gp)
 	{
 		int screenX = worldX - gp.player.worldX + gp.player.screenX;

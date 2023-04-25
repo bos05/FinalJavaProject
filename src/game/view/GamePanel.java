@@ -38,13 +38,13 @@ public class GamePanel extends JPanel implements Runnable
 	int FPS = 60;
 	
 	
-	public TileManager tileM = new TileManager(this);
-	KeyHandler keyH = new KeyHandler();
+	public TileManager tileM;
+	KeyHandler keyH;
 	Thread gameThread;//Thread is useful for when you update something very frequently
-	public CollisionChecker cChecker = new CollisionChecker(this);
-	public AssetSetter aSetter = new AssetSetter(this);
-	public Player player = new Player(this,keyH);
-	public SuperObject obj[] = new SuperObject[10];
+	public CollisionChecker cChecker;
+	public AssetSetter aSetter;
+	public Player player;
+	public SuperObject obj[];
 	
 	
 	
@@ -60,6 +60,20 @@ public class GamePanel extends JPanel implements Runnable
 	{
 		super();
 		
+		//initialing these in the constructor is much better that before it
+		//this way we are able to know if they are actually initialized
+		tileM = new TileManager(this);
+		keyH = new KeyHandler();
+		cChecker = new CollisionChecker(this);
+		aSetter = new AssetSetter(this);
+		player = new Player(this,keyH);
+		obj = new SuperObject[10];
+		
+		
+		
+		
+		
+		
 		//this.setSize(screenHeight, screenWidth);
 		this.setBackground(Color.black);
 		this.setDoubleBuffered(true); //can improve game performance?
@@ -67,6 +81,7 @@ public class GamePanel extends JPanel implements Runnable
 		this.setFocusable(true);
 	}
 	
+
 	public void setupGame()
 	{
 		aSetter.setObject();
@@ -75,7 +90,7 @@ public class GamePanel extends JPanel implements Runnable
 	public void startGameThread()
 	{
 		gameThread = new Thread(this);
-		gameThread.start();//calls run mehod
+		gameThread.start();//calls run method
 	}
 	
 	
@@ -133,7 +148,7 @@ public class GamePanel extends JPanel implements Runnable
 		{
 			if(obj[i] != null)
 			{
-				obj[i].draw(g2, null);
+				obj[i].draw(g2, this);
 			}
 		}
 		

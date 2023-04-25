@@ -11,7 +11,7 @@ public class Object_test extends SuperObject
 		name = "Test";
 		try
 		{
-			image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_1.png"));
+			image = ImageIO.read(getClass().getResourceAsStream("/objects/key.png"));
 		}
 		catch(IOException e)
 		{
