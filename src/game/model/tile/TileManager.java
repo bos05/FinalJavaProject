@@ -100,6 +100,49 @@ public class TileManager
 			
 			tile[18] = new Tile();
 			tile[18].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_13.png"));
+			
+			tile[19] = new Tile();
+			tile[19].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_1"));
+			
+			tile[20] = new Tile();
+			tile[20].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_2"));
+			
+			tile[21] = new Tile();
+			tile[21].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_3"));
+			
+			tile[22] = new Tile();
+			tile[22].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_4"));
+			
+			tile[23] = new Tile();
+			tile[23].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_5"));
+			
+			tile[24] = new Tile();
+			tile[24].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_6"));
+			
+			tile[25] = new Tile();
+			tile[25].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_7"));
+			
+			tile[26] = new Tile();
+			tile[26].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_8"));
+			
+			tile[27] = new Tile();
+			tile[27].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_9"));
+			
+			tile[28] = new Tile();
+			tile[28].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_10"));
+			
+			tile[29] = new Tile();
+			tile[29].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_11"));
+			
+			tile[30] = new Tile();
+			tile[30].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_12"));
+			
+			tile[31] = new Tile();
+			tile[31].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_13"));
+			
+			
+
+
 
 
 		}
