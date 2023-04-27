@@ -20,7 +20,7 @@ public class TileManager
 	{
 		this.gp = gp;
 		
-		tile = new Tile[50];//10 types of tiles
+		tile = new Tile[50];//50  types of tiles
 		mapTileNum = new int[gp.maxWorldCol] [gp.maxWorldRow];
 		
 			
@@ -212,7 +212,7 @@ public class TileManager
 			
 			if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
 			   worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-		       worldY + gp.tileSize * 2 > gp.player.worldY - gp.player.screenY &&
+		       worldY + gp.tileSize * 2  + 2> gp.player.worldY - gp.player.screenY &&
 			   worldY - gp.tileSize * 2 < gp.player.worldY + gp.player.screenY)
 			{
 			g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);

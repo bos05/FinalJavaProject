@@ -13,6 +13,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javax.swing.JPanel;
 
@@ -45,7 +48,7 @@ public class GamePanel extends JPanel implements Runnable
 	public Player player;
 	public SuperObject obj[];
 	public Entity monster[];
-	
+	ArrayList<Entity> entityList = new ArrayList<>();
 	
 	
 	// set player's default position
@@ -68,7 +71,7 @@ public class GamePanel extends JPanel implements Runnable
 		aSetter = new AssetSetter(this);
 		player = new Player(this,keyH);
 		obj = new SuperObject[10];
-		monster = new Entity[10];
+		monster = new Entity[20];
 		
 		
 		
@@ -156,17 +159,37 @@ public class GamePanel extends JPanel implements Runnable
 		//order is important on wich is drawn first
 		tileM.draw(g2);
 		
-		for(int i = 0; i < obj.length; i++)
+		
+		entityList.add(player);
+		for(int i = 0; i < monster.length; i++)
 		{
-			if(obj[i] != null)
+			if(monster[i] != null)
 			{
-				obj[i].draw(g2, this);
+				entityList.add(monster[i]);
 			}
 		}
+		//sort
+		Collections.sort(entityList, new Comparator<Entity>()
+		{
+			@Override
+			public int compare(Entity e1, Entity e2)
+			{
+				int result = Integer.compare(e1.worldY, e2.worldY);
+				return 0;
+			}
+		});
+
+		//draw entities
+		for(int i = 0 ; i < entityList.size(); i++)
+		{
+			entityList.get(i).draw(g2);
+		}
 		
-		player.draw(g2);
-		
-		
+		//empty list
+		for(int i = 0 ; i < entityList.size(); i++)
+		{
+			entityList.remove(i);
+		}
 		
 		g2.dispose();
 	}

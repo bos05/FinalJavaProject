@@ -1,5 +1,7 @@
 package game.model;
 
+import java.util.Random;
+
 import game.model.monster.Slime;
 import game.model.object.Object_test;
 import game.view.GamePanel;
@@ -22,8 +24,11 @@ public class AssetSetter
 	
 	public void setMonster ()
 	{
+		
 		gp.monster[0] = new Slime(gp);
-		gp.monster[0].worldX = gp.tileSize * 60;
-		gp.monster[0].worldY = gp.tileSize * 69;
+		gp.monster[0].worldX = gp.tileSize * 5;
+		gp.monster[0].worldY = gp.tileSize * 5;
+		
+
 	}
 }
