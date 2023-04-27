@@ -35,6 +35,7 @@ public class TileManager
 			tile[0] = new Tile();
 			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_grass_1.png"));
 			
+			
 			tile[1] = new Tile();
 			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_grass_2.png"));
 			

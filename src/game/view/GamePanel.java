@@ -4,8 +4,7 @@ import game.controller.Controller;
 import game.model.AssetSetter;
 import game.model.CollisionChecker;
 import game.model.KeyHandler;
-
-
+import game.model.entity.Entity;
 import game.model.entity.Player;
 import game.model.object.SuperObject;
 import game.model.tile.TileManager;
@@ -45,6 +44,7 @@ public class GamePanel extends JPanel implements Runnable
 	public AssetSetter aSetter;
 	public Player player;
 	public SuperObject obj[];
+	public Entity monster[];
 	
 	
 	
@@ -68,6 +68,7 @@ public class GamePanel extends JPanel implements Runnable
 		aSetter = new AssetSetter(this);
 		player = new Player(this,keyH);
 		obj = new SuperObject[10];
+		monster = new Entity[10];
 		
 		
 		
@@ -134,12 +135,15 @@ public class GamePanel extends JPanel implements Runnable
 	{
 		player.update();
 		
+		
+		
 	}
 	
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;
+		
 		
 		//order is important on wich is drawn first
 		tileM.draw(g2);

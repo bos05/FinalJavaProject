@@ -15,4 +15,5 @@ public class Entity
 	
 	public Rectangle solidArea;
 	public boolean collisionOn = false;
+	public int actionLockCounter = 0;
 }

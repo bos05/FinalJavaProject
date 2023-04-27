@@ -1,5 +1,6 @@
 package game.model;
 
+import game.model.monster.Slime;
 import game.model.object.Object_test;
 import game.view.GamePanel;
 
@@ -17,5 +18,12 @@ public class AssetSetter
 		gp.obj[0] = new Object_test();
 		gp.obj[0].worldX = 5 * gp.tileSize;
 		gp.obj[0].worldY = 5 * gp.tileSize;
+	}
+	
+	public void setMonster ()
+	{
+		gp.monster[0] = new Slime(gp);
+		gp.monster[0].worldX = gp.tileSize * 60;
+		gp.monster[0].worldY = gp.tileSize * 69;
 	}
 }
