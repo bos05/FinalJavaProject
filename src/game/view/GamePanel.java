@@ -86,6 +86,7 @@ public class GamePanel extends JPanel implements Runnable
 	public void setupGame()
 	{
 		aSetter.setObject();
+		aSetter.setMonster();
 	}
 	
 	public void startGameThread()
@@ -135,6 +136,13 @@ public class GamePanel extends JPanel implements Runnable
 	{
 		player.update();
 		
+		for(int i = 0; i < monster.length;i ++)
+		{
+			if(monster[i] != null)
+			{
+				monster[i].update();
+			}
+		}
 		
 		
 	}

@@ -15,8 +15,7 @@ import game.model.KeyHandler;
 
 public class Player extends Entity
 {
-	
-	GamePanel gp;
+
 	KeyHandler keyH;
 	
 	public final int screenX;
@@ -24,7 +23,8 @@ public class Player extends Entity
 	
 	public Player(GamePanel gp, KeyHandler keyH)
 	{
-		this.gp = gp;
+		super(gp);
+		
 		this.keyH = keyH;
 		
 		screenX = gp.screenWidth/2 - (35);
@@ -49,21 +49,16 @@ public class Player extends Entity
 	}
 	public void getPlayerImage()
 	{
-		try
-		{
-			up1 = ImageIO.read(getClass().getResourceAsStream("/player/player_up_1.png"));
-			up2 = ImageIO.read(getClass().getResourceAsStream("/player/player_up_2.png"));
-			down1 = ImageIO.read(getClass().getResourceAsStream("/player/player_down_1.png"));
-			down2 = ImageIO.read(getClass().getResourceAsStream("/player/player_down_2.png"));
-			left1 = ImageIO.read(getClass().getResourceAsStream("/player/player_left_1.png"));
-			left2 = ImageIO.read(getClass().getResourceAsStream("/player/player_left_2.png"));
-			right1 = ImageIO.read(getClass().getResourceAsStream("/player/player_right_1.png"));
-			right2 = ImageIO.read(getClass().getResourceAsStream("/player/player_right_2.png"));
-		}
-		catch(IOException e)
-		{
-			e.printStackTrace();
-		}
+		
+		up1 = setup("/player/player_up_1");
+		up2 = setup("/player/player_up_2");
+		down1 = setup("/player/player_down_1");
+		down2 = setup("/player/player_down_2");
+		left1 = setup("/player/player_left_1");
+		left2 = setup("/player/player_left_2");
+		right1 = setup("/player/player_right_1");
+		right2 = setup("/player/player_right_2");
+		
 		
 	}
 	
