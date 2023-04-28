@@ -20,13 +20,13 @@ public class Entity
 	
 	public int spriteCounter ;
 	public int spriteNum = 1;
-	public Rectangle solidArea;
+	public Rectangle solidArea = new Rectangle(0, 0, 48, 48);
+	public int solidAreaDefaultX, solidAreaDefaultY;
 	public boolean collisionOn = false;
 	public int actionLockCounter = 0;
 	int framesPerSprite = 0;
 	int spriteFrameCounter = 0;
-	
-	
+
 	public Entity(GamePanel gp)
 	{
 		this.gp = gp;
@@ -38,6 +38,9 @@ public class Entity
 		setAction();
 		
 		collisionOn = false;
+		
+		
+		gp.cChecker.checkEntity(this, gp.monster);
 		
 		// IF COLISION IS FALSE, PLAYER CAN MOVE
 				if(collisionOn == false )
@@ -69,7 +72,7 @@ public class Entity
 				        spriteNum = (spriteNum % totalFrames) + 1; // cycle through frames
 				        spriteFrameCounter = 0;
 				    }
-				    if (spriteCounter > framesPerSprite * 4) 
+				    if (spriteCounter > totalFrames) 
 				    {
 				        spriteCounter = 0;
 				    }

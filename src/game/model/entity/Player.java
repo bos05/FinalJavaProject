@@ -41,8 +41,8 @@ public class Player extends Entity
 	{
 		//not where player is drawn on screen 
 		//this is where they are in terms of the map
-		worldX = gp.tileSize * 23;
-		worldY = gp.tileSize * 21;
+		worldX = (gp.maxWorldRow * gp.tileSize)/2;
+		worldY = (gp.maxWorldCol * gp.tileSize)/2;
 		speed = 4;
 		direction = "down";
 		
@@ -88,6 +88,8 @@ public class Player extends Entity
 		//CHECK TILE COLLISION
 		collisionOn = false;
 		gp.cChecker.checkTile(this);
+		
+		int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);;
 		
 		// IF COLISION IS FALSE, PLAYER CAN MOVE
 		if(collisionOn == false )
@@ -176,5 +178,6 @@ public class Player extends Entity
 		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 	}
 
+	
 }
  

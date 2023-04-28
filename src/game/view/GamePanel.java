@@ -58,7 +58,7 @@ public class GamePanel extends JPanel implements Runnable
 	
 	int playerX = 100;
 	int playerY = 100;
-	int playerSpeed = 4;
+	double playerSpeed = 4;
 	
 	
 	
@@ -147,7 +147,7 @@ public class GamePanel extends JPanel implements Runnable
 		{
 			if(monster[i] != null)
 			{
-				monster[i].update(20, 2);
+				monster[i].update(30, 4);
 			}
 		}
 		

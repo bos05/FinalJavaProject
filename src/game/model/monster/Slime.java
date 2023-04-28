@@ -13,6 +13,9 @@ import game.view.GamePanel;
 public class Slime extends Entity
 {
 	public BufferedImage up3, up4, down3, down4, left3, left4, right3, right4;
+	
+	
+	
 
 	
 	public Slime(GamePanel gp)
@@ -22,10 +25,12 @@ public class Slime extends Entity
 		speed = 1;
 		
 		
-		//solidArea.x = 3;
-		//solidArea.y = 18;
-		//solidArea.width = 42;
-		//solidArea.height = 30;
+		solidArea.x = 3;
+		solidArea.y = 3;
+		solidArea.width = 42;
+		solidArea.height = 32;
+		solidAreaDefaultX = solidArea.x;
+		solidAreaDefaultY = solidArea.y;
 		
 		
 		getImage();
