@@ -11,18 +11,20 @@ import game.view.GamePanel;
 
 public class Entity
 {
-	GamePanel gp;
+	public GamePanel gp;
 	public int worldX, worldY, speed;
 	//BufferedImage describes an image with an accessible buffer of image data
 	public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
+	
 	public String direction = "down";
 	
 	public int spriteCounter ;
 	public int spriteNum = 1;
-	
 	public Rectangle solidArea;
 	public boolean collisionOn = false;
 	public int actionLockCounter = 0;
+	int framesPerSprite = 0;
+	int spriteFrameCounter = 0;
 	
 	
 	public Entity(GamePanel gp)
@@ -31,7 +33,7 @@ public class Entity
 	}
 	
 	public void setAction() {}
-	public void update() 
+	public void update(int framesPerSprite, int totalFrames) 
 	{
 		setAction();
 		
@@ -56,21 +58,23 @@ public class Entity
 						
 					}
 				}
-				
+			
 				//waits until spriteCounter gets to 12(12 frames) then it switches the spriteNum
-				spriteCounter++;
-				if(spriteCounter > 12)
-				{
-					if(spriteNum == 1)
-					{
-						spriteNum = 2;
-					}
-					else if(spriteNum == 2)
-					{
-						spriteNum = 1;
-					}
-					spriteCounter = 0;
+				for (int i = 0; i < totalFrames; i++) {
+				    // Display current sprite frame
+
+				    spriteCounter++;
+				    spriteFrameCounter++;
+				    if (spriteFrameCounter > framesPerSprite) {
+				        spriteNum = (spriteNum % totalFrames) + 1; // cycle through frames
+				        spriteFrameCounter = 0;
+				    }
+				    if (spriteCounter > framesPerSprite * 4) 
+				    {
+				        spriteCounter = 0;
+				    }
 				}
+				
 	}
 	
 	public void draw(Graphics2D g2)

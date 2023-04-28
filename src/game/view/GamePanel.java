@@ -6,6 +6,7 @@ import game.model.CollisionChecker;
 import game.model.KeyHandler;
 import game.model.entity.Entity;
 import game.model.entity.Player;
+import game.model.monster.Slime;
 import game.model.object.SuperObject;
 import game.model.tile.TileManager;
 
@@ -48,6 +49,8 @@ public class GamePanel extends JPanel implements Runnable
 	public Player player;
 	public SuperObject obj[];
 	public Entity monster[];
+	
+	
 	ArrayList<Entity> entityList = new ArrayList<>();
 	
 	
@@ -72,6 +75,7 @@ public class GamePanel extends JPanel implements Runnable
 		player = new Player(this,keyH);
 		obj = new SuperObject[10];
 		monster = new Entity[20];
+		
 		
 		
 		
@@ -143,7 +147,7 @@ public class GamePanel extends JPanel implements Runnable
 		{
 			if(monster[i] != null)
 			{
-				monster[i].update();
+				monster[i].update(20, 2);
 			}
 		}
 		
