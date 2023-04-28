@@ -159,6 +159,7 @@ public class GamePanel extends JPanel implements Runnable
 	{
 		player.update();
 		
+		
 		for(int i = 0; i < monster.length;i ++)
 		{
 			if(monster[i] != null)
@@ -179,6 +180,7 @@ public class GamePanel extends JPanel implements Runnable
 		//order is important on wich is drawn first
 		tileM.draw(g2);
 		
+		obj[0].draw(g2,  this);
 		
 		entityList.add(player);
 		for(int i = 0; i < monster.length; i++)

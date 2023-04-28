@@ -28,7 +28,7 @@ public class SuperObject
 	       worldY + gp.tileSize * 2 > gp.player.worldY - gp.player.screenY &&
 		   worldY - gp.tileSize * 2 < gp.player.worldY + gp.player.screenY)
 		{
-		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, gp.tileSize * 9, gp.tileSize * 9, null);
 		}
 	}
 }
