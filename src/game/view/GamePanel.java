@@ -7,7 +7,6 @@ import game.model.KeyHandler;
 import game.model.entity.Entity;
 import game.model.entity.Player;
 import game.model.monster.Slime;
-import game.model.object.SuperObject;
 import game.model.tile.TileManager;
 
 import java.awt.Color;
@@ -47,11 +46,11 @@ public class GamePanel extends JPanel implements Runnable
 	public CollisionChecker cChecker;
 	public AssetSetter aSetter;
 	public Player player;
-	public SuperObject obj[];
+	public Entity landmark[];
 	public Entity monster[];
 	
 	
-	ArrayList<Entity> entityList = new ArrayList<>();
+	ArrayList<Entity> entityList;
 	
 	
 	// set player's default position
@@ -73,8 +72,9 @@ public class GamePanel extends JPanel implements Runnable
 		cChecker = new CollisionChecker(this);
 		aSetter = new AssetSetter(this);
 		player = new Player(this,keyH);
-		obj = new SuperObject[10];
+		landmark = new Entity[10];
 		monster = new Entity[20];
+		entityList = new ArrayList<>();
 		
 		
 		
@@ -180,9 +180,17 @@ public class GamePanel extends JPanel implements Runnable
 		//order is important on wich is drawn first
 		tileM.draw(g2);
 		
-		obj[0].draw(g2,  this);
+		//BOTTOM RENDER
+		for(int i = 0; i < landmark.length; i++)
+		{
+			if(landmark[i] != null)
+			{
+				entityList.add(landmark[i]);
+			}
+		}
 		
 		entityList.add(player);
+		
 		for(int i = 0; i < monster.length; i++)
 		{
 			if(monster[i] != null)
@@ -190,6 +198,9 @@ public class GamePanel extends JPanel implements Runnable
 				entityList.add(monster[i]);
 			}
 		}
+		//TOP RENDER
+		
+		
 		//sort
 		Collections.sort(entityList, new Comparator<Entity>()
 		{

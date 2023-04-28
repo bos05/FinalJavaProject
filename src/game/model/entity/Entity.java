@@ -24,6 +24,9 @@ public class Entity
 	public int solidAreaDefaultX, solidAreaDefaultY;
 	public boolean collisionOn = false;
 	public int actionLockCounter = 0;
+	public BufferedImage image;
+	public String name;
+	public boolean collision  = false;
 	int framesPerSprite = 0;
 	int spriteFrameCounter = 0;
 
