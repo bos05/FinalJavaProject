@@ -28,7 +28,7 @@ public class Slime extends Entity
 		solidArea.x = 3;
 		solidArea.y = 3;
 		solidArea.width = 42;
-		solidArea.height = 32;
+		solidArea.height = 30;
 		solidAreaDefaultX = solidArea.x;
 		solidAreaDefaultY = solidArea.y;
 		
