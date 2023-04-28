@@ -1,4 +1,4 @@
-package game.model.object;
+package game.model.landmark;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -9,9 +9,9 @@ import javax.imageio.ImageIO;
 import game.model.entity.Entity;
 import game.view.GamePanel;
 
-public class Temple_Object extends Entity
+public class TempleLandmark extends Entity
 {
-	public Temple_Object(GamePanel gp)
+	public TempleLandmark(GamePanel gp)
 	{
 		super(gp);
 		

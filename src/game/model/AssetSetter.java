@@ -2,8 +2,8 @@ package game.model;
 
 import java.util.Random;
 
+import game.model.landmark.TempleLandmark;
 import game.model.monster.Slime;
-import game.model.object.Temple_Object;
 import game.view.GamePanel;
 
 public class AssetSetter 
@@ -17,7 +17,7 @@ public class AssetSetter
 	
 	public void setObject ()
 	{
-		gp.landmark[0] = new Temple_Object(gp);
+		gp.landmark[0] = new TempleLandmark(gp);
 		gp.landmark[0].worldX = 5 * gp.tileSize;
 		gp.landmark[0].worldY = 5 * gp.tileSize;
 	}
