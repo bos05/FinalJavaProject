@@ -14,7 +14,7 @@ public class Slime extends Entity
 {
 	public BufferedImage up3, up4, down3, down4, left3, left4, right3, right4;
 	
-	
+	int slimeScale;
 	
 
 	
@@ -151,7 +151,7 @@ public class Slime extends Entity
 				}
 				break;
 			}
-		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, screenX, screenY, 48, 48, null);
 		}
 	}
 
