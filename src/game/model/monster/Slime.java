@@ -169,18 +169,34 @@ public class Slime extends Entity
 			if(i <= 25)
 			{
 				direction = "up";
+				if (collisionOn = true)
+				{
+					direction = "down";
+				}
 			}
 			if(i > 25 && i <= 50)
 			{
-				direction = "left";
+				direction = "down";
+				if (collisionOn = true)
+				{
+					direction = "up";
+				}
 			}
 			if(i > 50 && i <= 75)
 			{
-				direction = "right";
+				direction = "left";
+				if (collisionOn = true)
+				{
+					direction = "right";
+				}
 			}
 			if(i > 75 && i <= 100)
 			{
 				direction = "right";
+				if (collisionOn = true)
+				{
+					direction = "left";
+				}
 			}
 			
 			actionLockCounter = 0;
