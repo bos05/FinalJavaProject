@@ -18,8 +18,8 @@ public class AssetSetter
 	public void setObject ()
 	{
 		gp.landmark[0] = new TempleLandmark(gp);
-		gp.landmark[0].worldX = 5 * gp.tileSize;
-		gp.landmark[0].worldY = 5 * gp.tileSize;
+		gp.landmark[0].worldX = 59 * gp.tileSize;
+		gp.landmark[0].worldY = 47 * gp.tileSize;
 	}
 	
 	public void setMonster ()

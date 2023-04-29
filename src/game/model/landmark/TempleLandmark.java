@@ -16,7 +16,7 @@ public class TempleLandmark extends Entity
 		super(gp);
 		
 		name = "Temple";
-		down1 = setup("/objects/temple_full");
+		down1 = setup("/landmarks/temple_full");
 		
 		
 	}
