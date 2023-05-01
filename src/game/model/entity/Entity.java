@@ -30,7 +30,7 @@ public class Entity
 	int framesPerSprite = 0;
 	int spriteFrameCounter = 0;
 
-	public int maxLIde;
+	public int maxLife;
 	public int life;
 	
 	public Entity(GamePanel gp)
