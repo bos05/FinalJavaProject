@@ -24,12 +24,15 @@ public class Entity
 	public int solidAreaDefaultX, solidAreaDefaultY;
 	public boolean collisionOn = false;
 	public int actionLockCounter = 0;
-	public BufferedImage image;
+	public BufferedImage image, image1, image3;
 	public String name;
 	public boolean collision  = false;
 	int framesPerSprite = 0;
 	int spriteFrameCounter = 0;
 
+	public int maxLIde;
+	public int life;
+	
 	public Entity(GamePanel gp)
 	{
 		this.gp = gp;
