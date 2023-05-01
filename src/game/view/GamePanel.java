@@ -167,7 +167,14 @@ public class GamePanel extends JPanel implements Runnable
 				monster[i].update(30, 4);
 			}
 		}
+<<<<<<< Updated upstream
 		
+=======
+		if (gameState == pauseState)
+		{
+			
+		}
+>>>>>>> Stashed changes
 		
 	}
 	
