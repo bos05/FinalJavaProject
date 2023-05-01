@@ -127,7 +127,7 @@ public class Slime extends Entity
 				{
 					image = left3;
 				}
-				if(spriteNum == 3)
+				if(spriteNum == 4)
 				{
 					image = left4;
 				}

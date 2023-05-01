@@ -52,97 +52,6 @@ public class TileManager
 			tile[5] = new Tile();
 			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_dirt_1.png"));
 			
-			tile[6] = new Tile();
-			tile[6].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_1.png"));
-			tile[6].collision = true;
-			
-			tile[7] = new Tile();
-			tile[7].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_2.png"));
-			tile[7].collision = true;
-			
-			tile[8] = new Tile();
-			tile[8].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_3.png"));
-			tile[8].collision = true;
-			
-			tile[9] = new Tile();
-			tile[9].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_4.png"));
-			tile[9].collision = true;
-			
-			tile[10] = new Tile();
-			tile[10].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_5.png"));
-			tile[10].collision = true;
-			
-			tile[11] = new Tile();
-			tile[11].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_6.png"));
-			tile[11].collision = true;
-			
-			tile[12] = new Tile();
-			tile[12].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_7.png"));
-			tile[12].collision = true;
-			
-			tile[13] = new Tile();
-			tile[13].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_8.png"));
-			tile[13].collision = true;
-			
-			tile[14] = new Tile();
-			tile[14].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_9.png"));
-			tile[14].collision = true;
-			
-			tile[15] = new Tile();
-			tile[15].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_10.png"));
-			
-			tile[16] = new Tile();
-			tile[16].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_11.png"));
-			tile[16].collision = true;
-			
-			tile[17] = new Tile();
-			tile[17].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_12.png"));
-			tile[17].collision = true;
-			
-			tile[18] = new Tile();
-			tile[18].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_13.png"));
-			
-			tile[19] = new Tile();
-			tile[19].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_1.png"));
-			
-			tile[20] = new Tile();
-			tile[20].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_2.png"));
-			
-			tile[21] = new Tile();
-			tile[21].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_3.png"));
-			
-			tile[22] = new Tile();
-			tile[22].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_4.png"));
-			
-			tile[23] = new Tile();
-			tile[23].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_5.png"));
-			
-			tile[24] = new Tile();
-			tile[24].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_6.png"));
-			
-			tile[25] = new Tile();
-			tile[25].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_7.png"));
-			
-			tile[26] = new Tile();
-			tile[26].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_8.png"));
-			
-			tile[27] = new Tile();
-			tile[27].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_9.png"));
-			
-			tile[28] = new Tile();
-			tile[28].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_10.png"));
-			
-			tile[29] = new Tile();
-			tile[29].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_11.png"));
-			
-			tile[30] = new Tile();
-			tile[30].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_12.png"));
-			
-			tile[31] = new Tile();
-			tile[31].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_13.png"));
-			
-			tile[32] = new Tile();
-			tile[32].image = ImageIO.read(getClass().getResourceAsStream("/tiles/temple_top_14.png"));
 			
 			
 
@@ -211,9 +120,9 @@ public class TileManager
 			int screenY = worldY - gp.player.worldY + gp.player.screenY;
 			
 			if(worldX + gp.tileSize > gp.player.worldX - gp.player.screenX &&
-			   worldX - gp.tileSize < gp.player.worldX + gp.player.screenX &&
-		       worldY + gp.tileSize * 2  + 2> gp.player.worldY - gp.player.screenY &&
-			   worldY - gp.tileSize * 2 < gp.player.worldY + gp.player.screenY)
+			   worldX - gp.tileSize - 20< gp.player.worldX + gp.player.screenX &&
+		       worldY + gp.tileSize * 2  +10 > gp.player.worldY - gp.player.screenY &&
+			   worldY - gp.tileSize * 2 + 10 < gp.player.worldY + gp.player.screenY)
 			{
 			g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 			}
