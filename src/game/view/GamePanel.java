@@ -8,6 +8,7 @@ import game.model.entity.Entity;
 import game.model.entity.Player;
 import game.model.monster.Slime;
 import game.model.tile.TileManager;
+import game.model.ui.UI;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -45,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable
 	Thread gameThread;//Thread is useful for when you update something very frequently
 	public CollisionChecker cChecker;
 	public AssetSetter aSetter;
+	public UI ui;
 	public Player player;
 	public Entity landmark[];
 	public Entity monster[];
@@ -71,6 +73,7 @@ public class GamePanel extends JPanel implements Runnable
 		keyH = new KeyHandler();
 		cChecker = new CollisionChecker(this);
 		aSetter = new AssetSetter(this);
+		ui = new UI(this);
 		player = new Player(this,keyH);
 		landmark = new Entity[10];
 		monster = new Entity[20];
@@ -198,6 +201,8 @@ public class GamePanel extends JPanel implements Runnable
 				entityList.add(monster[i]);
 			}
 		}
+		
+		ui.draw(g2);
 		//TOP RENDER
 		
 		
