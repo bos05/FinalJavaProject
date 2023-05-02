@@ -24,7 +24,7 @@ public class Entity
 	public int solidAreaDefaultX, solidAreaDefaultY;
 	public boolean collisionOn = false;
 	public int actionLockCounter = 0;
-	public BufferedImage image, image1, image3;
+	public BufferedImage image, image2, image3;
 	public String name;
 	public boolean collision  = false;
 	int framesPerSprite = 0;

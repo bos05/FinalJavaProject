@@ -15,7 +15,7 @@ public class UI
 	public UI(GamePanel gp)
 	{
 		this.gp = gp;
-		arial40 = new Font("Roboto Serif", Font.PLAIN, 40);
+		arial40 = new Font("Arial", Font.PLAIN, 40);
 	}
 	
 	public void draw(Graphics2D g2)
