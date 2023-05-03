@@ -22,6 +22,6 @@ public class UI
 	{
 		g2.setFont(arial40);
 		g2.setColor(Color.WHITE);
-		g2.drawString("Sugma",50, 50);
+		g2.drawString("UI test",50, 50);
 	}
 }
