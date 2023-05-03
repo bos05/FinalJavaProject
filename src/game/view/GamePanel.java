@@ -19,7 +19,12 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import javax.swing.JPanel;
-
+/**
+ *This is the main class that stores a lot of the methods that
+ * will do things like update and draw the things on screen
+ * @author blin2710
+ *
+ */
 public class GamePanel extends JPanel implements Runnable
 {
 	// screen settings 
@@ -62,7 +67,11 @@ public class GamePanel extends JPanel implements Runnable
 	double playerSpeed = 4;
 	
 	
-	
+	/**
+	 * Constructor for the GamePanel class
+	 * 
+	 * @param app
+	 */
 	public GamePanel(Controller app)
 	{
 		super();
@@ -92,13 +101,19 @@ public class GamePanel extends JPanel implements Runnable
 		this.setFocusable(true);
 	}
 	
-
+	/**
+	 * called at the beginning of the game so
+	 * everything in here are the first things to be compiled
+	 */
 	public void setupGame()
 	{
 		aSetter.setObject();
 		aSetter.setMonster();
 	}
 	
+	/**
+	 * Starts the main thread the game will use
+	 */
 	public void startGameThread()
 	{
 		gameThread = new Thread(this);
@@ -107,7 +122,10 @@ public class GamePanel extends JPanel implements Runnable
 	
 	
 
-
+	/**
+	 * Run() is called every 1/60 second to call other 
+	 * methods that will update and draw
+	 */
 	public void run() 
 	{
 	    double drawInterval = 1000000000/FPS;
@@ -157,7 +175,10 @@ public class GamePanel extends JPanel implements Runnable
 	    }
 	}
 
-
+	/**
+	 * will update all the entity's in the game to decide
+	 *  were they're going if the have collision etc
+	 */
 	public void update()
 	{
 		player.update();
@@ -174,6 +195,10 @@ public class GamePanel extends JPanel implements Runnable
 		
 	}
 	
+	/**
+	 * this method is in charge of repainting all of the things 
+	 * that are on screen like monsters landmarks and tiles 
+	 */
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);

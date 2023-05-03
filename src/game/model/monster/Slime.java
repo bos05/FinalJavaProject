@@ -9,7 +9,12 @@ import javax.imageio.ImageIO;
 
 import game.model.entity.Entity;
 import game.view.GamePanel;
-
+/**
+ * this class makes the things needed to have a slime 
+ * It is also a subclass of Entity
+ * @author blin2710
+ *
+ */
 public class Slime extends Entity
 {
 	public BufferedImage up3, up4, down3, down4, left3, left4, right3, right4;
@@ -17,7 +22,10 @@ public class Slime extends Entity
 	int slimeScale;
 	
 
-	
+	/**
+	 * constructor for Slime
+	 * @param gp
+	 */
 	public Slime(GamePanel gp)
 	{
 		super(gp);
@@ -36,6 +44,9 @@ public class Slime extends Entity
 		getImage();
 
 	}
+	/**
+	 * gets the assets for the slime
+	 */
 	public void getImage()
 	{
 	
@@ -64,7 +75,9 @@ public class Slime extends Entity
 	}
 	
 	
-	
+	/**
+	 * draws the slime so that it will switch though it's 4 frames of animation
+	 */
 	public void draw(Graphics2D g2)
 	{
 		BufferedImage image = null;

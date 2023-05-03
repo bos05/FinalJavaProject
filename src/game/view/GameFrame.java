@@ -3,12 +3,19 @@ package game.view;
 import javax.swing.JFrame;
 
 import game.controller.Controller;
-
+/**
+ *GameFrame sets up the frame 
+ * @author blin2710
+ *
+ */
 public class GameFrame extends JFrame
 {
 	private Controller app;
 	private GamePanel panel;
-	
+	/**
+	 * the constructor for the GameFrame class
+	 * @param app
+	 */
 	public GameFrame(Controller app)
 	{
 		super();
@@ -18,7 +25,9 @@ public class GameFrame extends JFrame
 		
 		setupFrame();
 	}
-	
+	/**
+	 * sets the default attributes for the frame
+	 */
 	private void setupFrame()
 	{
 	    this.setContentPane(panel);

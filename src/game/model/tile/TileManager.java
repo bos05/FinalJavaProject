@@ -9,13 +9,20 @@ import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
 
 import game.view.GamePanel;
-
+/**
+ * this class displays the tiles that make up the background
+ * @author blin2710
+ *
+ */
 public class TileManager 
 {
 	GamePanel gp;
 	public Tile[] tile;
 	public int mapTileNum [][];
-	
+	/**
+	 * constructor for TileManager class
+	 * @param gp
+	 */
 	public TileManager(GamePanel gp)
 	{
 		this.gp = gp;
@@ -27,7 +34,9 @@ public class TileManager
 		getTileImage();
 		loadMap("/maps/map_1.txt");
 	}
-	
+	/**
+	 * In this method is am loading the tiles onto the tile ArrayList
+	 */
 	public void getTileImage()
 	{
 		try
@@ -52,11 +61,6 @@ public class TileManager
 			tile[5] = new Tile();
 			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_dirt_1.png"));
 			
-			
-			
-
-
-
 
 		}
 		catch(IOException e)
@@ -64,7 +68,11 @@ public class TileManager
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * this method goes through the 2D array and 
+	 * figures out what tile is in what spot
+	 * @param filePath
+	 */
 	public void loadMap(String filePath)
 	{
 		try
@@ -102,7 +110,10 @@ public class TileManager
 		}
 		
 	}
-	
+	/**
+	 * this method draws the tiles that are in the boundaries of the screen
+	 * @param g2
+	 */
 	public void draw(Graphics2D g2)
 	{
 		int worldCol =  0;
@@ -136,20 +147,6 @@ public class TileManager
 			}
 			
 		}
-			/*
-			while(col < gp.maxScreenCol && row < gp.maxScreenRow)
-			{
-				g2.drawImage(tile[3].image, x, y, gp.tileSize, gp.tileSize, null);
-				col++;
-				x += gp.tileSize;
-				
-				if(col == gp.maxScreenCol)
-				{
-					col = 0;
-					x = 0;
-					row++;
-					y += gp.tileSize;
-				}
-		}*///testing out new tiles
+	
 	}
 }
