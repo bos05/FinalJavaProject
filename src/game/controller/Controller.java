@@ -2,12 +2,19 @@ package game.controller;
 
 import game.view.GameFrame;
 import game.view.GamePanel;
-
+/**
+ * sets up runner
+ * @author blin2710
+ *
+ */
 public class Controller 
 {
 	private GameFrame frame;
 
 
+	/**
+	 * Controller constructor
+	 */
 	
 	public Controller()
 	{
@@ -17,7 +24,9 @@ public class Controller
 		
 		
 	}
-	
+	/**
+	 *start method
+	 */
 	public void start()
 	{
 		

@@ -2,15 +2,28 @@ package game.model;
 
 import game.model.entity.Entity;
 import game.view.GamePanel;
-
+/**
+ * this class makes collision possible for all things
+ * @author blin2710
+ *
+ */
 public class CollisionChecker 
 {
 	GamePanel gp;
+	
+	/**
+	 * CollisionChecker constructor
+	 * @param gp
+	 */
 	public CollisionChecker(GamePanel gp)
 	{
 		this.gp = gp;
 	}
-	
+	/**
+	 * This methods check for collision in tiles
+	 * it then makes it so that you can't run into it
+	 * @param entity
+	 */
 	public void checkTile(Entity entity)
 	{
 		int entityLeftWorldX = entity.worldX + entity.solidArea.x;
@@ -67,7 +80,11 @@ public class CollisionChecker
 		
 		
 	}
-	
+	/**
+	 * Checks for collision with the 
+	 * player and adjust according
+	 * @param entity
+	 */
 	public void checkPlayer(Entity entity)
 	{
 		entity.solidArea.x = entity.worldX + entity.solidArea.x;

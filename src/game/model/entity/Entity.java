@@ -8,7 +8,12 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import game.view.GamePanel;
-
+/**
+ * this is the superclass to a tone of other classes
+ * it hold many common methods and variables like update and draw
+ * @author blin2710
+ *
+ */
 public class Entity
 {
 	public GamePanel gp;
@@ -33,12 +38,24 @@ public class Entity
 	public int maxLife;
 	public int life;
 	
+	/**
+	 * constructor for Entity
+	 * @param gp
+	 */
 	public Entity(GamePanel gp)
 	{
 		this.gp = gp;
 	}
-	
+	/**
+	 * need setAction method in superClass
+	 */
 	public void setAction() {}
+	/**
+	 * this is the default update method if the
+	 *  subclass doens't require something special
+	 * @param framesPerSprite
+	 * @param totalFrames
+	 */
 	public void update(int framesPerSprite, int totalFrames) 
 	{
 		setAction();
@@ -86,7 +103,10 @@ public class Entity
 				}
 				
 	}
-	
+	/**default draw method for 
+	 * all subclasses of Entity
+	 * @param g2
+	 */
 	public void draw(Graphics2D g2)
 	{
 		BufferedImage image = null;
@@ -145,6 +165,12 @@ public class Entity
 		}
 	}
 	
+	/**
+	 * this helps to make it simpler to 
+	 * add resources in subclasses of Entity
+	 * @param imagePath
+	 * @return
+	 */
 	public BufferedImage setup(String imagePath)
 	{
 		BufferedImage image = null;

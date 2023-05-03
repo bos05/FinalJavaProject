@@ -8,9 +8,19 @@ import javax.imageio.ImageIO;
 
 import game.model.entity.Entity;
 import game.view.GamePanel;
-
+/**
+ * this class used to make objects on the map
+ * that are bigger than single tile squares
+ * it is also a subclass for Entity
+ * @author blin2710
+ *
+ */
 public class TempleLandmark extends Entity
 {
+	/**
+	 * constructor for TempleLandMarker
+	 * @param gp
+	 */
 	public TempleLandmark(GamePanel gp)
 	{
 		super(gp);
@@ -20,7 +30,9 @@ public class TempleLandmark extends Entity
 		
 		
 	}
-	
+	/**
+	 * this draws the landmark regardless of weather the player sees it
+	 */
 	public void draw(Graphics2D g2)
 	{
 		BufferedImage image = null;

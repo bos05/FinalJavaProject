@@ -12,7 +12,13 @@ import javax.imageio.ImageIO;
 
 import game.model.KeyHandler;
 
-
+/**
+ * The Player class is does all the things 
+ * related to the player such as draw update
+ * it is also a subclass of Entity
+ * @author blin2710
+ *
+ */
 public class Player extends Entity
 {
 
@@ -20,7 +26,11 @@ public class Player extends Entity
 	
 	public final int screenX;
 	public final int screenY;
-	
+	/**
+	 * this is the constructor of Player class
+	 * @param gp
+	 * @param keyH
+	 */
 	public Player(GamePanel gp, KeyHandler keyH)
 	{
 		super(gp);
@@ -36,7 +46,9 @@ public class Player extends Entity
 		setDefaultValues();
 		getPlayerImage();
 	}
-	
+	/**
+	 * sets default variables for the player class
+	 */
 	public void setDefaultValues()
 	{
 		//not where player is drawn on screen 
@@ -51,6 +63,9 @@ public class Player extends Entity
 		life = maxLife;
 		
 	}
+	/**
+	 * sets the players assets
+	 */
 	public void getPlayerImage()
 	{
 		
@@ -65,7 +80,9 @@ public class Player extends Entity
 		
 		
 	}
-	
+	/**
+	 * updates the players position collision state etc
+	 */
 	public void update()
 	{
 		//only does thins inside when up, down, left, or right are pressed
@@ -132,6 +149,9 @@ public class Player extends Entity
 		}
 		}
 	}
+	/**
+	 * draws the frames that it got from update
+	 */
 	public void draw(Graphics2D g2)
 	{
 		BufferedImage image = null;

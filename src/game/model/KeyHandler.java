@@ -2,16 +2,25 @@ package game.model;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+/**
+ * The KeyHandler class is in charge of handling inputs
+ * @author blin2710
+ *
+ */
 public class KeyHandler implements KeyListener
 {
 	public boolean upPressed, downPressed, leftPressed, rightPressed;
 	
+	/**
+	 * KeyTyped constructor
+	 */
 	@Override
 	public void keyTyped(KeyEvent e) {
 		//don't use 
 	}
-
+	/**
+	 * this detects keys pressed
+	 */
 	@Override
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();//returns integer keyCode associated with the key pressed
@@ -33,7 +42,9 @@ public class KeyHandler implements KeyListener
 			rightPressed = true;
 		}
 	}
-
+	/**
+	 * this detects keys released
+	 */
 	@Override
 	public void keyReleased(KeyEvent e) 
 	{

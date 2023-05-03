@@ -169,7 +169,10 @@ public class Slime extends Entity
 	}
 
 	
-	
+	/**
+	 * this is a very basic way to get my slime to move around
+	 * it picks a random direction and goes there for 2 seconds
+	 */
 	public void setAction()
 	{
 		actionLockCounter++;
