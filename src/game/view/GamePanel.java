@@ -3,6 +3,7 @@ package game.view;
 import game.controller.Controller;
 import game.model.AssetSetter;
 import game.model.CollisionChecker;
+import game.model.EventHandler;
 import game.model.KeyHandler;
 import game.model.entity.Entity;
 import game.model.entity.Player;
@@ -52,6 +53,7 @@ public class GamePanel extends JPanel implements Runnable
 	public CollisionChecker cChecker;
 	public AssetSetter aSetter;
 	public UI ui;
+	public EventHandler eHandler;
 	public Player player;
 	public Entity landmark[];
 	public Entity monster[];
@@ -83,6 +85,7 @@ public class GamePanel extends JPanel implements Runnable
 		cChecker = new CollisionChecker(this);
 		aSetter = new AssetSetter(this);
 		ui = new UI(this);
+		eHandler = new EventHandler(this);
 		player = new Player(this,keyH);
 		landmark = new Entity[10];
 		monster = new Entity[20];
