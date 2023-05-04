@@ -19,9 +19,10 @@ public class HeartObject extends Entity
 		
 		name = "Heart";
 		image = setup("/objects/heart_full");
-		image2 = setup("/objects/heart_falf");
-		image3 = setup("/objects/heard_blank");
-
+		image2 = setup("/objects/heart_half");
+		image3 = setup("/objects/heart_blank");
+		
+		
 	}
 	
 

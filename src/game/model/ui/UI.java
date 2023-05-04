@@ -3,7 +3,10 @@ package game.model.ui;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
+import game.model.entity.Entity;
+import game.model.object.HeartObject;
 import game.view.GamePanel;
 /**
  * In charge of on-screen text and User-Interface
@@ -13,7 +16,10 @@ import game.view.GamePanel;
 public class UI 
 {
 	GamePanel gp;
+	Graphics2D g2;
 	Font arial40;
+	
+	BufferedImage heart_full, heart_half, heart_blank;
 	
 	/**
 	 * constructor for UI class
@@ -23,6 +29,13 @@ public class UI
 	{
 		this.gp = gp;
 		arial40 = new Font("Arial", Font.PLAIN, 40);
+		
+		//CREATE HUD OBJECTS
+		Entity heart = new HeartObject(gp);
+		heart_full = heart.image;
+		heart_half = heart.image2;
+		heart_blank = heart.image3;
+		
 	}
 	/**
 	 * draws the UI elements
@@ -30,8 +43,25 @@ public class UI
 	 */
 	public void draw(Graphics2D g2)
 	{
-		g2.setFont(arial40);
-		g2.setColor(Color.WHITE);
-		g2.drawString("UI test",50, 50);
+	    this.g2 = g2; // Initialize the g2 instance variable
+	    g2.setFont(arial40);
+	    g2.setColor(Color.WHITE);
+	    drawPlayerLife();
+	}
+
+	
+	public void drawPlayerLife()
+	{
+		int x = gp.tileSize/2;
+		int y = gp.tileSize/3;
+		int i = 0;
+		
+		//DRAW BLANK VALUES
+		while(i < gp.player.maxLife/2)
+		{
+			g2.drawImage(heart_blank, x, y, gp.tileSize, gp.tileSize, null);
+			i++;
+			x += gp.tileSize;
+		}
 	}
 }
