@@ -52,6 +52,7 @@ public class UI
 	
 	public void drawPlayerLife()
 	{
+		gp.player.life = 4;
 		int x = gp.tileSize/2;
 		int y = gp.tileSize/3;
 		int i = 0;
@@ -59,7 +60,7 @@ public class UI
 		//DRAW BLANK VALUES
 		while(i < gp.player.maxLife/2)
 		{
-			g2.drawImage(heart_blank, x, y, gp.tileSize, gp.tileSize, null);
+			g2.drawImage(heart_blank, x, y, gp.tileSize - 8, gp.tileSize - 8, null);
 			i++;
 			x += gp.tileSize;
 		}
@@ -71,11 +72,11 @@ public class UI
 		
 		while(i < gp.player.life)
 		{
-			g2.drawImage(heart_half, x, y, gp.tileSize, gp.tileSize, null);
+			g2.drawImage(heart_half, x, y, gp.tileSize- 6, gp.tileSize - 8, null);
 			i++;
 			if( i < gp.player.life)
 			{
-				g2.drawImage(heart_full, x, y, gp.tileSize, gp.tileSize, null);
+				g2.drawImage(heart_full, x, y, gp.tileSize- 6, gp.tileSize- 8, null);
 
 			}
 			i++;
