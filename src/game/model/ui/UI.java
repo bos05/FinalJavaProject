@@ -63,5 +63,23 @@ public class UI
 			i++;
 			x += gp.tileSize;
 		}
+		
+		//VARIABLE RESET
+		x = gp.tileSize/2;
+		y = gp.tileSize/3;
+		i = 0;
+		
+		while(i < gp.player.life)
+		{
+			g2.drawImage(heart_half, x, y, gp.tileSize, gp.tileSize, null);
+			i++;
+			if( i < gp.player.life)
+			{
+				g2.drawImage(heart_full, x, y, gp.tileSize, gp.tileSize, null);
+
+			}
+			i++;
+			x += gp.tileSize;
+		}
 	}
 }
