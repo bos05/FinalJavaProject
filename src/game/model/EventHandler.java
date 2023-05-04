@@ -29,8 +29,6 @@ public class EventHandler
 		if(hit(2, 2, "any") == true)
 		{
 			gp.player.life -= 1;
-			System.out.println("Ahhhhhhhhhhhhh");
-
 		}
 	}
 	public boolean hit(int eventCol, int eventRow, String reqDirection)
@@ -57,5 +55,7 @@ public class EventHandler
 		
 		return hit;
 	}
+	
+
 	
 }

@@ -113,6 +113,9 @@ public class Player extends Entity
 		//CHECK MONSTER COLLISION
 		int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);;
 		
+		//CHECK FOR EVENT
+		gp.eHandler.checkEvent();
+		
 		// IF COLISION IS FALSE, PLAYER CAN MOVE
 		if(collisionOn == false )
 		{
