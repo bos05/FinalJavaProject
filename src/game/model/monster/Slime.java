@@ -30,7 +30,10 @@ public class Slime extends Entity
 	{
 		super(gp);
 		
+		type = 2;
 		speed = 1;
+		maxLife = 4;
+		life = maxLife;
 		
 		
 		solidArea.x = 3;

@@ -36,6 +36,8 @@ public class Entity
 	public boolean collision  = false;
 	int framesPerSprite = 0;
 	int spriteFrameCounter = 0;
+	public int type;// 0 = player, 1 = monster
+	
 
 	public int maxLife;
 	public int life;
@@ -66,8 +68,17 @@ public class Entity
 		
 		gp.cChecker.checkTile(this);
 		gp.cChecker.checkEntity(this, gp.monster);
-		gp.cChecker.checkPlayer(this);
+		boolean contactPlayer = gp.cChecker.checkPlayer(this);
 		
+		
+		if(this.type == 2 && contactPlayer == true)
+		{
+			if(gp.player.invincible == false)
+			{
+				gp.player.life -= 1;
+				gp.player.invincible = true;
+			}
+		}
 		// IF COLISION IS FALSE, PLAYER CAN MOVE
 				if(collisionOn == false )
 				{
