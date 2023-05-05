@@ -26,7 +26,7 @@ public class TempleLandmark extends Entity
 		super(gp);
 		
 		name = "Temple";
-		down1 = setup("/landmarks/temple_full");
+		down1 = setup("/landmarks/temple_full", gp.tileSize, gp.tileSize);
 		
 		
 	}

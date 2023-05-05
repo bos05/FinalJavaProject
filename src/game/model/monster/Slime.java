@@ -55,25 +55,25 @@ public class Slime extends Entity
 	
 		
 		
-		up1 = setup("/monster/slime_front_1");
-		up2 = setup("/monster/slime_front_2");
-		up3 = setup("/monster/slime_front_3");
-		up4 = setup("/monster/slime_front_4");
+		up1 = setup("/monster/slime_front_1", gp.tileSize, gp.tileSize);
+		up2 = setup("/monster/slime_front_2", gp.tileSize, gp.tileSize);
+		up3 = setup("/monster/slime_front_3", gp.tileSize, gp.tileSize);
+		up4 = setup("/monster/slime_front_4", gp.tileSize, gp.tileSize);
 		
-		down1 = setup("/monster/slime_front_1");
-		down2 = setup("/monster/slime_front_2");
-		down3 = setup("/monster/slime_front_3");
-		down4 = setup("/monster/slime_front_4");
+		down1 = setup("/monster/slime_front_1", gp.tileSize, gp.tileSize);
+		down2 = setup("/monster/slime_front_2", gp.tileSize, gp.tileSize);
+		down3 = setup("/monster/slime_front_3", gp.tileSize, gp.tileSize);
+		down4 = setup("/monster/slime_front_4", gp.tileSize, gp.tileSize);
 
-		left1 = setup("/monster/slime_front_1");
-		left2 = setup("/monster/slime_front_2");
-		left3 = setup("/monster/slime_front_3");
-		left4 = setup("/monster/slime_front_4");
+		left1 = setup("/monster/slime_front_1", gp.tileSize, gp.tileSize);
+		left2 = setup("/monster/slime_front_2", gp.tileSize, gp.tileSize);
+		left3 = setup("/monster/slime_front_3", gp.tileSize, gp.tileSize);
+		left4 = setup("/monster/slime_front_4", gp.tileSize, gp.tileSize);
 
-		right1 = setup("/monster/slime_front_1");
-		right2 = setup("/monster/slime_front_2");
-		right3 = setup("/monster/slime_front_3");
-		right4 = setup("/monster/slime_front_4");
+		right1 = setup("/monster/slime_front_1", gp.tileSize, gp.tileSize);
+		right2 = setup("/monster/slime_front_2", gp.tileSize, gp.tileSize);
+		right3 = setup("/monster/slime_front_3", gp.tileSize, gp.tileSize);
+		right4 = setup("/monster/slime_front_4", gp.tileSize, gp.tileSize);
 		
 	}
 	
