@@ -64,25 +64,6 @@ class ControllerTest
 		assertTrue(totalPrivate >= expectedPrivateCount, "You need 1 or more private methods: interactWithChatbot");
 		asserTure(method == "Controller", "looks for controller method");
 		
-//		Field [] dataMembers = testedController.getClass().getDeclaredFields();
-//		assertTrue(dataMembers.length > 1, "You need at least 2 data members in the Controller!");
-//		
-		//String [] required = {"Chatbot","Popup"};
-		//int requiredDataMembers = 0;
-		
-//		for (Field currentField : dataMembers)
-//		{
-//			String name = currentField.getType().getSimpleName();
-//			if (name.equals(required[0]))
-//			{
-//				requiredDataMembers += 5;
-//			}
-//			else if (name.equals(required[1]))
-//			{
-//				requiredDataMembers += 6;
-//			}	
-//		}
-		//assertTrue(requiredDataMembers == 11, "You need a Chatbot and a Popup data member in the Controller!");
 		
 	}
 
