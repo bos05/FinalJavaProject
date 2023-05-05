@@ -61,10 +61,10 @@ class ControllerTest
 		}
 		
 		assertTrue(totalPublic >= expectedPublicCount, "You need only 1 public method: start");
-		assertTrue(totalPrivate >= expectedPrivateCount, "You need 1 or more private methods: interactWithChatbot");
+		assertTrue(totalPrivate >= expectedPrivateCount, "You need 1 or more private methods: testHappy");
 		asserTure(method == "Controller", "looks for controller method");
 		
-		
+
 	}
 
 	private void asserTure(boolean b, String string)

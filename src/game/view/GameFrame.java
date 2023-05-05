@@ -26,6 +26,13 @@ public class GameFrame extends JFrame
 		setupFrame();
 	}
 	/**
+	 * make test read frame
+	 * @param gameFrame
+	 */
+	public GameFrame(GameFrame gameFrame) {
+		// TODO Auto-generated constructor stub
+	}
+	/**
 	 * sets the default attributes for the frame
 	 */
 	private void setupFrame()
