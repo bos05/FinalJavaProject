@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import javax.swing.JPanel;
+
+import game.controller.IOController;
 /**
  *This is the main class that stores a lot of the methods that
  * will do things like update and draw the things on screen
@@ -57,7 +59,7 @@ public class GamePanel extends JPanel implements Runnable
 	public Player player;
 	public Entity landmark[];
 	public Entity monster[];
-	
+	public IOController fileIO;
 	
 	ArrayList<Entity> entityList;
 	
@@ -90,6 +92,7 @@ public class GamePanel extends JPanel implements Runnable
 		landmark = new Entity[10];
 		monster = new Entity[20];
 		entityList = new ArrayList<>();
+		fileIO = new IOController();
 		
 		
 		
@@ -256,8 +259,30 @@ public class GamePanel extends JPanel implements Runnable
 		
 		g2.dispose();
 	}
-
-	
-	
+	/**
+	 * calls saveTextToFile
+	 * @param path
+	 * @param contents
+	 */
+	public void save(String path, String contents)
+	{
+		fileIO.saveTextToFile(this, path, contents);
+	}
+	/**
+	 * loads previous files
+	 * @param path
+	 * @return
+	 */
+	public String load(String path)
+	{
+		String results = fileIO.loadTextFromFile(this, path);
+		
+		return results;
+	}
 
 }
+
+	
+	
+
+

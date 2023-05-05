@@ -7,11 +7,25 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
+import game.view.GamePanel;
 
 
+/**
+ * this class has the fileIO methods
+ *  used throughout the game
+ * @author Boss_
+ *
+ */
 public class IOController 
 {
-	public static void saveTextToFile(Controller app, String path, String text)
+	/**
+	 * This method saves the given text to a file with a filename
+	 *  generated based on the current date and time.
+	 * @param gamePanel
+	 * @param path
+	 * @param text
+	 */
+	public static void saveTextToFile(GamePanel gamePanel, String path, String text)
 	{
 		String filename= buildDateBasedFilename(path);
 		
@@ -31,7 +45,12 @@ public class IOController
 		}
 		
 	}
-	
+	/**
+	 * This method creates a file name based
+	 *  on current date and time and returns it.
+	 * @param path
+	 * @return
+	 */
 	public static String buildDateBasedFilename(String path)
 	{
 		String filename = path;
@@ -55,8 +74,14 @@ public class IOController
 		
 		return path;
 	}
-	
-	public static String loadTextFromFile(Controller app, String pathAndFilename)
+	/**
+	 * This method loads the contents of a text file and returns 
+	 * it as a string, with error handling in case the file is not found.
+	 * @param gamePanel
+	 * @param pathAndFilename
+	 * @return
+	 */
+	public static String loadTextFromFile(GamePanel gamePanel, String pathAndFilename)
 	{
 		String fileContents = "";
 		
