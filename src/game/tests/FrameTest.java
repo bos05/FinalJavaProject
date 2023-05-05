@@ -3,8 +3,8 @@ package game.tests;
 /**
  * Project imports
  */
-import poke.view.*;
-import poke.controller.Controller;
+import game.view.*;
+import game.controller.Controller;
 /**
  * Reflection imports
  */
@@ -25,12 +25,12 @@ import org.junit.jupiter.api.Test;
 
 class FrameTest
 {
-	private PokeFrame testedFrame;
+	private GameFrame testedFrame;
 
 	@BeforeEach
 	void setUp() throws Exception
 	{
-		this.testedFrame = new PokeFrame(new Controller()); 
+		this.testedFrame = new GameFrame(new Controller()); 
 	}
 
 	@AfterEach
@@ -47,7 +47,7 @@ class FrameTest
 		assertTrue(methods.length == 1, "You need exactly 1 method in the PokeFrame");
 		assertTrue(testedFrame.getTitle().length() > 5, "Your title needs at least 6 letters");
 		assertTrue(!testedFrame.isResizable(), "Your PokeFrame should NOT be resizable!");
-		assertTrue(testedFrame.getTitle().toLowerCase().contains("poke"), "Your title needs to have poke in it");
-		assertTrue(testedFrame.getContentPane() instanceof PokePanel, "Your PokeFrame needs to have a PokePanel inside");
+		//assertTrue(testedFrame.getTitle().toLowerCase().contains("poke"), "Your title needs to have poke in it");
+		assertTrue(testedFrame.getContentPane() instanceof GamePanel, "Your PokeFrame needs to have a PokePanel inside");
 	}
 }

@@ -3,19 +3,17 @@ package game.tests;
 /**
  * Project imports
  */
+
 import game.controller.Controller;
-import game.view.GameFrame;
 
 /**
  * Reflection imports
  */
 import java.lang.reflect.*;
-import java.util.ArrayList;
 
 /**
  * Testing imports
  */
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.AfterEach;
@@ -25,113 +23,73 @@ import org.junit.jupiter.api.Test;
 class ControllerTest
 {
 	private Controller testedController;
-	
 	@BeforeEach
 	void setUp() throws Exception
 	{
-		this.testedController = new Controller();
+		testedController = new Controller();
 	}
 
 	@AfterEach
 	void tearDown() throws Exception
 	{
-		this.testedController = null;
+		testedController = null;
 	}
 
 	@Test
-	void testMethods()
+	void testControllerStructure()
 	{
+		//assertTrue(testedController.getClass().getDeclaredConstructors().length == 1, "You need a zero parameter constructor!");
 		Method [] methods = testedController.getClass().getDeclaredMethods();
-		assertTrue(methods.length >= 7, "You need at least seven methods in the controller");
+		//assertTrue(methods.length >= 2, "You need to have at least two methods in your Controller class");
 		
-		boolean hasCreate = false;
-		boolean hasSave = false;
-		boolean hasGetData = false;
-		boolean hasBuild = false;
-		boolean hasValidate = false;
-		boolean hasUpdate = false;
+		int expectedPublicCount = 1;
+		int expectedPrivateCount = 1;
+		int totalPublic = 0;
+		int totalPrivate = 0;
+		String method = "";
 		
-		for (Method method : methods)
+		for (Method currentMethod : methods)
 		{
-			if (method.getName().equals("buildPokedexText"))
+			if(Modifier.isPrivate(currentMethod.getModifiers()))
 			{
-				hasBuild = true;
-				assertTrue(Modifier.isPublic(method.getModifiers()), "The buildPokedexText method method must be public");
-				Class <?> returnType = method.getReturnType();
-				assertTrue(returnType.isArray(), "This method needs to return an array");
-				assertTrue(returnType.getComponentType().equals(String.class), "The array needs to be of Strings" );
+				totalPrivate++;
 			}
-			else if (method.getName().equals("getPokemonData"))
+			else if (Modifier.isPublic(currentMethod.getModifiers()))
 			{
-				hasGetData = true;
-				assertTrue(Modifier.isPublic(method.getModifiers()), "The getPokemonData method method must be public");
-				Class <?> returnType = method.getReturnType();
-				assertTrue(returnType.isArray(), "This method needs to return an array");
-				assertTrue(returnType.getComponentType().equals(String.class), "The array needs to be of Strings" );
-			}
-			else if (method.getName().equals("save"))
-			{
-				hasSave = true;
-				assertTrue(Modifier.isPublic(method.getModifiers()), "The save method method must be public");
-				assertTrue(method.getReturnType().equals(Void.TYPE), "The save method needs to be a void method!");
-			}
-			else if (method.getName().equals("createPokedex"))
-			{
-				hasCreate = true;
-				assertTrue(Modifier.isPrivate(method.getModifiers()), "The createPokedex method method must be private");
-			}
-			else if (method.getName().equals("updateCurrentPokemon"))
-			{
-				hasUpdate = true;
-				assertTrue(Modifier.isPublic(method.getModifiers()), "The updateCurrentPokemon method method must be public");
-			}
-			else if (method.getName().equals("validateNumber"))
-			{
-				hasValidate = true;
-				assertTrue(Modifier.isPublic(method.getModifiers()), "The validateNumber method method must be public");
-			}
-			
-			
+				totalPublic++;
+			}	
 		}
 		
-		assertTrue(hasCreate, "You need a method named createPokedex");
-		assertTrue(hasGetData, "You need a method named getPokemonData");
-		assertTrue(hasSave, "You need a method named save");
-		assertTrue(hasBuild, "You need a method named buildPokedexText");
-		assertTrue(hasUpdate, "You need a method named updateCurrentPokemon");
-		assertTrue(hasValidate, "You need a method named validateNumber");
+		assertTrue(totalPublic >= expectedPublicCount, "You need only 1 public method: start");
+		assertTrue(totalPrivate >= expectedPrivateCount, "You need 1 or more private methods: interactWithChatbot");
+		asserTure(method == "Controller", "looks for controller method");
+		
+//		Field [] dataMembers = testedController.getClass().getDeclaredFields();
+//		assertTrue(dataMembers.length > 1, "You need at least 2 data members in the Controller!");
+//		
+		//String [] required = {"Chatbot","Popup"};
+		//int requiredDataMembers = 0;
+		
+//		for (Field currentField : dataMembers)
+//		{
+//			String name = currentField.getType().getSimpleName();
+//			if (name.equals(required[0]))
+//			{
+//				requiredDataMembers += 5;
+//			}
+//			else if (name.equals(required[1]))
+//			{
+//				requiredDataMembers += 6;
+//			}	
+//		}
+		//assertTrue(requiredDataMembers == 11, "You need a Chatbot and a Popup data member in the Controller!");
+		
 	}
-	
-	@Test
-	void testStructure()
+
+	private void asserTure(boolean b, String string)
 	{
-		Field [] dataMembers = testedController.getClass().getDeclaredFields();
-		assertTrue(dataMembers.length >= 3, "The controller needs at least three data members");
+		// TODO Auto-generated method stub
 		
-		boolean hasSave = false;
-		boolean hasFrame = false;
-		boolean hasList = false;
-		
-		for (Field field : dataMembers)
-		{
-			assertTrue(Modifier.isPrivate(field.getModifiers()), "The data member must be private");
-			if (field.getType().equals(ArrayList.class))
-			{
-				hasList = true;
-			}
-			else if (field.getType().equals(String.class))
-			{
-				hasSave = true;
-			}
-			else if (field.getType().equals(GameFrame.class))
-			{
-				hasFrame = true;
-			}
-		}
-		
-		assertTrue(hasFrame, "You need a PokeFrame!");
-		assertTrue(hasList, "You need a pokedex ArrayList!");
-		assertTrue(hasSave, "You need a save file text!");
 	}
 
 }

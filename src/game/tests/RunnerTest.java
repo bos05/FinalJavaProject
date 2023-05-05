@@ -1,9 +1,13 @@
 package game.tests;
 
+
+
 /**
  * Project imports
  */
-import poke.controller.Runner;
+
+import game.controller.Runner;
+
 /**
  * Reflection imports
  */
@@ -18,20 +22,18 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 class RunnerTest
 {
-
 	private Runner testedRunner;
-
+	
 	@BeforeEach
-	public void setUp() throws Exception
+	void setUp() throws Exception
 	{
 		testedRunner = new Runner();
 	}
 
 	@AfterEach
-	public void tearDown() throws Exception
+	void tearDown() throws Exception
 	{
 		testedRunner = null;
 	}
