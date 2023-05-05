@@ -50,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable
 	
 	
 	public TileManager tileM;
-	KeyHandler keyH;
+	public KeyHandler keyH;
 	Thread gameThread;//Thread is useful for when you update something very frequently
 	public CollisionChecker cChecker;
 	public AssetSetter aSetter;

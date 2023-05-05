@@ -45,6 +45,7 @@ public class Player extends Entity
 		
 		setDefaultValues();
 		getPlayerImage();
+		getPlayerAttackImage();
 	}
 	/**
 	 * sets default variables for the player class
@@ -85,14 +86,14 @@ public class Player extends Entity
 	 */
 	public void getPlayerAttackImage()
 	{
-		attackUp1 = setup("player/boy_attack_up_1", gp.tileSize / 2, gp.tileSize / 2);
-		attackUp2 = setup("player/boy_attack_up_2", gp.tileSize / 2, gp.tileSize / 2);
-		attackDown1 = setup("player/boy_attack_down_1", gp.tileSize, gp.tileSize);
-		attackDown2 = setup("player/boy_attack_down_2", gp.tileSize, gp.tileSize);
-		attackLeft1 = setup("player/boy_attack_left_1", gp.tileSize, gp.tileSize);
-		attackLeft1 = setup("player/boy_attack_left_2", gp.tileSize, gp.tileSize);
-		attackRight1 = setup("player/boy_attack_right_1", gp.tileSize, gp.tileSize);
-		attackRight2 = setup("player/boy_attack_right_2", gp.tileSize, gp.tileSize); 
+		attackUp1 = setup("player/player_up_1", gp.tileSize, gp.tileSize * 2);
+		attackUp2 = setup("player/boy_attack_up_2", gp.tileSize, gp.tileSize * 2);
+		attackDown1 = setup("player/boy_attack_down_1", gp.tileSize, gp.tileSize * 2);
+		attackDown2 = setup("player/boy_attack_down_2", gp.tileSize, gp.tileSize * 2);
+		attackLeft1 = setup("player/boy_attack_left_1", gp.tileSize * 2, gp.tileSize);
+		attackLeft1 = setup("player/boy_attack_left_2", gp.tileSize * 2, gp.tileSize);
+		attackRight1 = setup("player/boy_attack_right_1", gp.tileSize * 2, gp.tileSize);
+		attackRight2 = setup("player/boy_attack_right_2", gp.tileSize * 2, gp.tileSize); 
 		
 	}
 	/**
@@ -179,6 +180,19 @@ public class Player extends Entity
 			}
 		}
 			
+	}
+	
+	public void attack(int i)
+	{
+		if(i != 999)
+		{
+			if(gp.keyH.enterPressed == true)
+			{
+				attacking = true;
+			}
+		}
+		
+		gp.keyH.enterPressed = false;
 	}
 	/**
 	 * does damage when monster collided with

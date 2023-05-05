@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import game.model.UtilityTool;
 import game.view.GamePanel;
 /**
  * this is the superclass to a tone of other classes
@@ -31,6 +32,7 @@ public class Entity
 	public int solidAreaDefaultX, solidAreaDefaultY;
 	public boolean collisionOn = false;
 	public boolean invincible = false;
+	public boolean attacking = false;
 	public int invincibleCounter = 0;
 	public int actionLockCounter = 0;
 	public BufferedImage image, image2, image3;
@@ -189,11 +191,12 @@ public class Entity
 	public BufferedImage setup(String imagePath, int width, int height)
 	{
 		BufferedImage image = null;
+		UtilityTool uTool = new UtilityTool();
 		
 		try
 		{
 			image = ImageIO.read(getClass().getResourceAsStream(imagePath + ".png"));
-			
+			image = uTool.scaleImage(image, width, height);
 		}
 		catch(IOException e)
 		{
