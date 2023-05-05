@@ -111,7 +111,8 @@ public class Player extends Entity
 		gp.cChecker.checkTile(this);
 		
 		//CHECK MONSTER COLLISION
-		int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);;
+		int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+		contactMonster(monsterIndex);
 		
 		//CHECK FOR EVENT
 		gp.eHandler.checkEvent();
@@ -151,7 +152,35 @@ public class Player extends Entity
 			spriteCounter = 0;
 		}
 		}
+		
+		//NEEDS TO BE OUT OF KEY IF
+		if(invincible == true)
+		{
+			invincibleCounter++;
+			if(invincibleCounter > 60)
+			{
+				invincible = false;
+				invincibleCounter = 0;
+			}
+		}
+			
 	}
+	/**
+	 * does damage when monster collided with
+	 * @param i
+	 */
+	public void contactMonster(int i)
+	{
+		if(i != 999)
+		{
+			if(invincible == false)
+			{	
+				life -= 1;
+				invincible = true;
+			}
+		}
+	}
+	
 	/**
 	 * draws the frames that it got from update
 	 */
