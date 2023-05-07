@@ -119,6 +119,16 @@ public class Entity
 				        spriteCounter = 0;
 				    }
 				}
+				if(invincible == true)
+				{
+					invincibleCounter++;
+					if(invincibleCounter > 40)
+					{
+						invincible = false;
+						invincibleCounter = 0;
+					}
+				}
+				
 				
 	}
 	/**default draw method for 

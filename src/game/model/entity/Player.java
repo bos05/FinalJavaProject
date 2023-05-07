@@ -42,6 +42,9 @@ public class Player extends Entity
 		
 		solidArea = new Rectangle(8, 16, 32, 36);
 		
+		attackArea.width = 36;
+		attackArea.height = 36;
+		
 		
 		setDefaultValues();
 		getPlayerImage();
@@ -101,116 +104,157 @@ public class Player extends Entity
 	 */
 	public void update()
 	{
-		if(attacking = true)
+		if(attacking == true)
 		{
-		spriteCounter++;	
+			attacking();
+		}
+		//only does thins inside when up, down, left, or right are pressed
+		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true)
+		{
+			if(keyH.upPressed == true)
+			{
+				direction = "up";		
+			}
+			else if(keyH.downPressed == true)
+			{
+				direction= "down";
+			}
+			else if(keyH.leftPressed == true)
+			{
+				direction = "left";
+			}
+			else if(keyH.rightPressed == true)
+			{
+				direction = "right";
+			}
+			
+			//CHECK TILE COLLISION
+			collisionOn = false;
+			gp.cChecker.checkTile(this);
+			
+			//CHECK MONSTER COLLISION
+			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+			contactMonster(monsterIndex);
+			
+			//CHECK FOR EVENT
+			gp.eHandler.checkEvent();
+			
+			
+			
+			// IF COLISION IS FALSE, PLAYER CAN MOVE
+			if(collisionOn == false || keyH.enterPressed == false)
+			{
+				switch(direction) {
+				case "up":
+					worldY -= speed;
+					break;
+				case "down":
+					worldY += speed;
+					break;
+				case "left":
+					worldX-= speed;
+					break;
+				case "right":
+					worldX += speed;
+					break;
+					
+				}
+			}
+			
+			gp.keyH.enterPressed = false;
+
+			//waits until spriteCounter gets to 12(12 frames) then it switches the spriteNum
+			spriteCounter++;
+			if(spriteCounter > 12)
+			{
+				if(spriteNum == 1)
+				{
+					spriteNum = 2;
+				}
+				else if(spriteNum == 2)
+				{
+					spriteNum = 1;
+				}
+				spriteCounter = 0;
+			}
+			}
+			
+			//NEEDS TO BE OUT OF KEY IF
+			if(invincible == true)
+			{
+				invincibleCounter++;
+				if(invincibleCounter > 60)
+				{
+					invincible = false;
+					invincibleCounter = 0;
+				}
+			}
+			
+	}
+	
+	public void attacking()
+	{
+		spriteCounter++;
 		
-		if(spriteCounter <= 5) 
+		if(spriteCounter <= 5)
 		{
 			spriteNum = 1;
 		}
 		if(spriteCounter > 5 && spriteCounter <= 25)
 		{
-			spriteNum =2;
+			spriteNum = 2;
+			
+			
+			int currentWorldX = worldX;
+			int currentWorldY = worldY;
+			int solidAreaWidth = solidArea.width;
+			int solidAreaHeight = solidArea.height;
+			
+			switch (direction)
+			{
+			case "up":worldY -= attackArea.height;break;
+			case "down": worldY += attackArea.height;break;
+			case "left": worldX -= attackArea.width;break;
+			case "right": worldX += attackArea.width;break;
+			}
+			//attackArea becomes solidArea
+			solidArea.width = attackArea.width;
+			solidArea.height = attackArea.height;
+			//check monster collision with the update worldX, worldY, and solidArea
+			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
+			damageMonster(monsterIndex);
+			
+			worldX = currentWorldX;
+			worldY = currentWorldY;
+			solidArea.width = solidAreaWidth;
+			solidArea.height = solidAreaHeight;
+			
 		}
-		if (spriteCounter > 25)
+		if(spriteCounter > 25)
 		{
-			spriteNum =1;
+			spriteNum = 1;
 			spriteCounter = 0;
 			attacking = false;
+
 		}
-		}
-		
-		//only does thins inside when up, down, left, or right are pressed
-		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true)
-		{
-		
-		if(keyH.upPressed == true)
-		{
-			direction = "up";		
-		}
-		else if(keyH.downPressed == true)
-		{
-			direction= "down";
-		}
-		else if(keyH.leftPressed == true)
-		{
-			direction = "left";
-		}
-		else if(keyH.rightPressed == true)
-		{
-			direction = "right";
-		}
-		
-		//CHECK TILE COLLISION
-		collisionOn = false;
-		gp.cChecker.checkTile(this);
-		
-		//CHECK MONSTER COLLISION
-		int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
-		contactMonster(monsterIndex);
-		
-		//CHECK FOR EVENT
-		gp.eHandler.checkEvent();
-		
-		// IF COLISION IS FALSE, PLAYER CAN MOVE
-		if(collisionOn == false )
-		{
-			switch(direction) {
-			case "up":
-				worldY -= speed;
-				break;
-			case "down":
-				worldY += speed;
-				break;
-			case "left":
-				worldX-= speed;
-				break;
-			case "right":
-				worldX += speed;
-				break;
-				
-			}
-		}
-		
-		//waits until spriteCounter gets to 12(12 frames) then it switches the spriteNum
-		spriteCounter++;
-		if(spriteCounter > 12)
-		{
-			if(spriteNum == 1)
-			{
-				spriteNum = 2;
-			}
-			else if(spriteNum == 2)
-			{
-				spriteNum = 1;
-			}
-			spriteCounter = 0;
-		}
-		}
-		
-		//NEEDS TO BE OUT OF KEY IF
-		if(invincible == true)
-		{
-			invincibleCounter++;
-			if(invincibleCounter > 60)
-			{
-				invincible = false;
-				invincibleCounter = 0;
-			}
-		}
-			
 	}
 	
 	public void attack(int i)
 	{
-		if(i != 999)
+		if(gp.keyH.enterPressed == true)
 		{
-			if(gp.keyH.enterPressed == true)
+			if(i != 999)
 			{
+				System.out.println("test");
 				attacking = true;
+
+			}
+			else
+			{
+				
 			}
 		}
+		
 		
 		gp.keyH.enterPressed = false;
 	}
@@ -230,6 +274,24 @@ public class Player extends Entity
 		}
 	}
 	
+	public void damageMonster(int i)
+	{
+		if(i != 999)
+		{
+			if(gp.monster[i].invincible == false)
+			{
+				System.out.println("hit");
+				gp.monster[i].life -= 1;
+				gp.monster[i].invincible = true;
+				
+				if(gp.monster[i].life <= 0)
+				{
+					gp.monster[i] = null;
+				}
+			}
+		}
+	}
+	
 	/**
 	 * draws the frames that it got from update
 	 */
@@ -242,14 +304,14 @@ public class Player extends Entity
 		switch(direction)
 		{
 		case "up":
-			if(attacking = false)
+			if(attacking == false)
 			{
 				if(spriteNum == 1) {image = up1;}
-				if(spriteNum == 2) {image = up1;}
+				if(spriteNum == 2) {image = up2;}
 
 			}
 			
-			if(attacking = true)
+			else if(attacking == true)
 			{
 				tempScreenY = screenY - gp.tileSize;
 				if(spriteNum == 1) {image = attackUp1;}
@@ -258,28 +320,28 @@ public class Player extends Entity
 			
 			break;
 		case "down":
-			if(attacking = false)
+			if(attacking == false)
 			{
 				if(spriteNum == 1) {image = down1;}
-				if(spriteNum == 2) {image = down1;}
+				if(spriteNum == 2) {image = down2;}
 
 			}
 			
-			if(attacking = true)
+			else if(attacking == true)
 			{
 				if(spriteNum == 1) {image = attackDown1;}
 				if(spriteNum == 2) {image = attackDown2;}
 			}
 			break;
 		case "left":
-			if(attacking = false)
+			if(attacking == false)
 			{
 				if(spriteNum == 1) {image = left1;}
 				if(spriteNum == 2) {image = left2;}
 
 			}
 			
-			if(attacking = true)
+			else if(attacking == true)
 			{
 				tempScreenX = screenX - gp.tileSize;
 				if(spriteNum == 1) {image = attackLeft1;}
@@ -287,14 +349,14 @@ public class Player extends Entity
 			}
 			break;
 		case "right":
-			if(attacking = false)
+			if(attacking == false)
 			{
 				if(spriteNum == 1) {image = right1;}
 				if(spriteNum == 2) {image = right2;}
 
 			}
 			
-			if(attacking = true)
+			else if(attacking == true)
 			{
 				if(spriteNum == 1) {image = attackRight1;}
 				if(spriteNum == 2) {image = attackRight2;}
@@ -307,4 +369,3 @@ public class Player extends Entity
 
 	
 }
- 
