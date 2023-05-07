@@ -225,7 +225,7 @@ public class GamePanel extends JPanel implements Runnable
 		
 		entityList.add(player);
 		
-		for(int i = 0; i < monster.length; i++)
+		for(int i = 0; i < monster.length; )
 		{
 			if(monster[i] != null)
 			{

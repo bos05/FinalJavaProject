@@ -40,6 +40,7 @@ public class Entity
 	public String name;
 	public boolean collision  = false;
 	int framesPerSprite = 0;
+	
 	int spriteFrameCounter = 0;
 	public int type;// 0 = player, 1 = monster
 	

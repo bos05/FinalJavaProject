@@ -243,20 +243,9 @@ public class Player extends Entity
 	{
 		if(gp.keyH.enterPressed == true)
 		{
-			if(i != 999)
-			{
-				System.out.println("test");
-				attacking = true;
-
-			}
-			else
-			{
-				
-			}
+			System.out.println("Enter");
+			attacking = true;
 		}
-		
-		
-		gp.keyH.enterPressed = false;
 	}
 	/**
 	 * does damage when monster collided with
