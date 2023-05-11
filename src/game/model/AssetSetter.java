@@ -38,8 +38,10 @@ public class AssetSetter
 	{
 		
 		gp.monster[0] = new Slime(gp);
-		gp.monster[0].worldX = gp.tileSize * 2;
-		gp.monster[0].worldY = gp.tileSize * 2 ;
+		gp.monster[0].worldX = gp.tileSize * 60;
+		gp.monster[0].worldY = gp.tileSize * 65;
+		
+
 		
 
 	}

@@ -135,7 +135,7 @@ public class Player extends Entity
 			//CHECK MONSTER COLLISION
 			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
 			contactMonster(monsterIndex);
-			
+			attack(monsterIndex);
 			//CHECK FOR EVENT
 			gp.eHandler.checkEvent();
 			
