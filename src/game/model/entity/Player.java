@@ -5,6 +5,7 @@ import game.view.GamePanel;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.awt.RenderingHints.Key;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -109,7 +110,8 @@ public class Player extends Entity
 			attacking();
 		}
 		//only does thins inside when up, down, left, or right are pressed
-		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true)
+		if(!attacking) {
+		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true )
 		{
 			if(keyH.upPressed == true)
 			{
@@ -128,6 +130,7 @@ public class Player extends Entity
 				direction = "right";
 			}
 			
+			
 			//CHECK TILE COLLISION
 			collisionOn = false;
 			gp.cChecker.checkTile(this);
@@ -142,7 +145,7 @@ public class Player extends Entity
 			
 			
 			// IF COLISION IS FALSE, PLAYER CAN MOVE
-			if(collisionOn == false || keyH.enterPressed == false)
+			if(collisionOn == false && keyH.enterPressed == false)
 			{
 				switch(direction) {
 				case "up":
@@ -157,12 +160,14 @@ public class Player extends Entity
 				case "right":
 					worldX += speed;
 					break;
+				
 					
 				}
 			}
+		}
 			
 			gp.keyH.enterPressed = false;
-
+			
 			//waits until spriteCounter gets to 12(12 frames) then it switches the spriteNum
 			spriteCounter++;
 			if(spriteCounter > 12)
@@ -189,6 +194,7 @@ public class Player extends Entity
 					invincibleCounter = 0;
 				}
 			}
+			
 			
 	}
 	
@@ -237,6 +243,7 @@ public class Player extends Entity
 			attacking = false;
 
 		}
+
 	}
 	
 	public void attack(int i)
