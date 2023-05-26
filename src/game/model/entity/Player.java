@@ -92,8 +92,8 @@ public class Player extends Entity
 	{
 		attackUp1 = setup("/player/boy_attack_up_1", gp.tileSize, gp.tileSize * 2);
 		attackUp2 = setup("/player/boy_attack_up_2", gp.tileSize, gp.tileSize * 2);
-		attackDown1 = setup("/player/boy_attack_down_1", gp.tileSize, gp.tileSize * 2);
-		attackDown2 = setup("/player/boy_attack_down_2", gp.tileSize, gp.tileSize * 2);
+		attackDown1 = setup("/player/player_attack_down_1", gp.tileSize, gp.tileSize * 2);
+		attackDown2 = setup("/player/player_attack_down_2", gp.tileSize, gp.tileSize * 2);
 		attackLeft1 = setup("/player/boy_attack_left_1", gp.tileSize * 2, gp.tileSize);
 		attackLeft2 = setup("/player/boy_attack_left_2", gp.tileSize * 2, gp.tileSize);
 		attackRight1 = setup("/player/boy_attack_right_1", gp.tileSize * 2, gp.tileSize);
@@ -111,7 +111,7 @@ public class Player extends Entity
 		}
 		//only does thins inside when up, down, left, or right are pressed
 		if(!attacking) {
-		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true )
+		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true)
 		{
 			if(keyH.upPressed == true)
 			{
@@ -145,7 +145,7 @@ public class Player extends Entity
 			
 			
 			// IF COLISION IS FALSE, PLAYER CAN MOVE
-			if(collisionOn == false && keyH.enterPressed == false)
+			if(collisionOn == false && keyH.enterPressed == false && !attacking)
 			{
 				switch(direction) {
 				case "up":
@@ -164,7 +164,6 @@ public class Player extends Entity
 					
 				}
 			}
-		}
 			
 			gp.keyH.enterPressed = false;
 			
@@ -193,8 +192,7 @@ public class Player extends Entity
 					invincible = false;
 					invincibleCounter = 0;
 				}
-			}
-			
+			}}
 			
 	}
 	
@@ -202,11 +200,11 @@ public class Player extends Entity
 	{
 		spriteCounter++;
 		
-		if(spriteCounter <= 5)
+		if(spriteCounter <= 100)
 		{
 			spriteNum = 1;
 		}
-		if(spriteCounter > 5 && spriteCounter <= 25)
+		if(spriteCounter > 100 && spriteCounter <= 200)
 		{
 			spriteNum = 2;
 			
@@ -236,7 +234,7 @@ public class Player extends Entity
 			solidArea.height = solidAreaHeight;
 			
 		}
-		if(spriteCounter > 25)
+		if(spriteCounter > 200)
 		{
 			spriteNum = 1;
 			spriteCounter = 0;
