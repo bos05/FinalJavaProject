@@ -19,6 +19,7 @@ public class UI
 	Graphics2D g2;
 	Font arial40;
 	
+	
 	BufferedImage heart_full, heart_half, heart_blank;
 	
 	/**

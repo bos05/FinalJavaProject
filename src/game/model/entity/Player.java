@@ -264,6 +264,7 @@ public class Player extends Entity
 			{	
 				life -= 1;
 				invincible = true;
+				
 			}
 		}
 	}
@@ -276,6 +277,7 @@ public class Player extends Entity
 			{
 				System.out.println("hit");
 				gp.monster[i].life -= 1;
+				gp.monster[i].damageReaction();
 				gp.monster[i].invincible = true;
 				
 				if(gp.monster[i].life <= 0)
@@ -361,7 +363,6 @@ public class Player extends Entity
 			}
 			break;
 		}
-		
 		g2.drawImage(image, tempScreenX, tempScreenY, null);
 	}
 

@@ -82,6 +82,7 @@ public class TempleLandmark extends Entity
 					image = right2;
 				}
 				break;
+				
 			}
 		g2.drawImage(image, screenX, screenY, gp.tileSize * 18, gp.tileSize * 18, null);
 		

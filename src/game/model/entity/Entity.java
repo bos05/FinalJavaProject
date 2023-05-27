@@ -70,6 +70,7 @@ public class Entity
 	 * need setAction method in superClass
 	 */
 	public void setAction() {}
+	public void damageReaction() {}
 	/**
 	 * this is the default update method if the
 	 *  subclass doens't require something special

@@ -1,12 +1,11 @@
 package game.model.monster;
 
 import java.awt.Color;
+import java.awt.Composite;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.IOException;
 import java.util.Random;
 
-import javax.imageio.ImageIO;
 
 import game.model.entity.Entity;
 import game.view.GamePanel;
@@ -84,6 +83,7 @@ public class Slime extends Entity
 	 */
 	public void draw(Graphics2D g2)
 	{
+		Composite originalComposite = g2.getComposite();
 		BufferedImage image = null;
 		int screenX = worldX - gp.player.worldX + gp.player.screenX;
 		int screenY = worldY - gp.player.worldY + gp.player.screenY;
@@ -169,6 +169,7 @@ public class Slime extends Entity
 				break;
 			}
 			
+
 			if(type == 2 && hpBarOn)
 			{
 				double oneScale = (double)gp.tileSize/maxLife;
@@ -200,10 +201,10 @@ public class Slime extends Entity
 			{
 				dyingAnimation(g2);
 			}
-			
-			
+
 			
 		g2.drawImage(image, screenX, screenY, 48, 48, null);
+		g2.setComposite(originalComposite);
 		}
 	}
 
@@ -224,38 +225,32 @@ public class Slime extends Entity
 			if(i <= 25)
 			{
 				direction = "up";
-				if (collisionOn = true)
-				{
-					direction = "down";
-				}
+				
 			}
 			if(i > 25 && i <= 50)
 			{
 				direction = "down";
-				if (collisionOn = true)
-				{
-					direction = "up";
-				}
+				
 			}
 			if(i > 50 && i <= 75)
 			{
 				direction = "left";
-				if (collisionOn = true)
-				{
-					direction = "right";
-				}
+				
 			}
 			if(i > 75 && i <= 100)
 			{
 				direction = "right";
-				if (collisionOn = true)
-				{
-					direction = "left";
-				}
+				
 			}
 			
 			actionLockCounter = 0;
 		}
 		
+	}
+	
+	public void damageReaction()
+	{
+		actionLockCounter = 0;
+		direction = gp.player.direction;
 	}
 }

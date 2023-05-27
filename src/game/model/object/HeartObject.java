@@ -16,6 +16,7 @@ public class HeartObject extends Entity
 	public HeartObject (GamePanel gp)
 	{
 		super(gp);
+		type = 3;
 		
 		name = "Heart";
 		image = setup("/objects/heart_full", gp.tileSize - 8, gp.tileSize - 12);
