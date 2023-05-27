@@ -32,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable
 {
 	// screen settings 
 	final int originalTileSize = 16;// 16x16 titles
-	int scale = 3;
+	public int scale = 3;
 	
 	public final int tileSize = originalTileSize * scale;// actual tile size
 	public final int maxScreenCol = 16;
@@ -211,6 +211,7 @@ public class GamePanel extends JPanel implements Runnable
 		Graphics2D g2 = (Graphics2D)g;
 		
 		
+		
 		//order is important on wich is drawn first
 		tileM.draw(g2);
 		
@@ -233,7 +234,7 @@ public class GamePanel extends JPanel implements Runnable
 			}
 		}
 		
-		ui.draw(g2);
+		
 		//TOP RENDER
 		
 		
@@ -253,6 +254,7 @@ public class GamePanel extends JPanel implements Runnable
 		{
 			entityList.get(i).draw(g2);
 		}
+		ui.draw(g2);
 		
 		//empty list
 		entityList.clear();
