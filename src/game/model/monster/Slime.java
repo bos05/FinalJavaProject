@@ -167,6 +167,12 @@ public class Slime extends Entity
 				}
 				break;
 			}
+			
+			if(dying == true)
+			{
+				dyingAnimation(g2);
+			}
+			
 		g2.drawImage(image, screenX, screenY, 48, 48, null);
 		}
 	}
