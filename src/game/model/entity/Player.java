@@ -280,7 +280,7 @@ public class Player extends Entity
 				
 				if(gp.monster[i].life <= 0)
 				{
-					gp.monster[i] = null;
+					gp.monster[i].dying = true;
 				}
 			}
 		}

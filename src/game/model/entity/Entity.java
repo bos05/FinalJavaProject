@@ -1,5 +1,6 @@
 package game.model.entity;
 
+import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -18,7 +19,7 @@ import game.view.GamePanel;
 public class Entity
 {
 	public GamePanel gp;
-	public int worldX, worldY, speed;
+	public int worldX, worldY;
 	//BufferedImage describes an image with an accessible buffer of image data
 	public BufferedImage up1, up2, down1, down2, left1, left2, right1, right2;
 	public BufferedImage attackUp1, attackUp2, attackDown1, attackDown2, attackLeft1,
@@ -34,19 +35,26 @@ public class Entity
 	public boolean collisionOn = false;
 	public boolean invincible = false;
 	public boolean attacking = false;
+	public boolean alive = true;
+	public boolean dying = false;
 	public int invincibleCounter = 0;
 	public int actionLockCounter = 0;
+	public int dyingCounter = 0;
 	public BufferedImage image, image2, image3;
-	public String name;
 	public boolean collision  = false;
 	int framesPerSprite = 0;
 	
 	int spriteFrameCounter = 0;
+	
+	//ATTRIBUTES
+	public int life;	
+	public int maxLife;
+	public String name;
+	public int speed;
 	public int type;// 0 = player, 1 = monster
 	
 
-	public int maxLife;
-	public int life;
+
 	
 	/**
 	 * constructor for Entity
@@ -190,8 +198,39 @@ public class Entity
 				}
 				break;
 			}
+			if(dying == true)
+			{
+				dyingAnimation(g2);
+			}
+		
 		g2.drawImage(image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 		}
+	}
+	
+	public void dyingAnimation(Graphics2D g2)
+	{
+		dyingCounter++;
+		
+		int i = 5;
+		
+		if(dyingCounter <= i){changeAlpha(g2, 0f);}
+		if(dyingCounter > i*2 && dyingCounter <= i*2){changeAlpha(g2, 1f);}
+		if(dyingCounter > i*3 && dyingCounter <= i*3){changeAlpha(g2, 0f);}
+		if(dyingCounter > i*4 && dyingCounter <= i*4){changeAlpha(g2, 1f);}
+		if(dyingCounter > i*5 && dyingCounter <= i*5){changeAlpha(g2, 0f);}
+		if(dyingCounter > i*6 && dyingCounter <= i*6){changeAlpha(g2, 1f);}
+		if(dyingCounter > i*7 && dyingCounter <= i*7){changeAlpha(g2, 0f);}
+		if(dyingCounter > i*8 && dyingCounter <= i*8){changeAlpha(g2, 1f);}
+		if(dyingCounter > i )
+		{
+			dying= false;
+			alive = false;
+		}
+	}
+	
+	public void changeAlpha(Graphics2D g2, float alphaValue)
+	{
+		g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alphaValue));
 	}
 	
 	/**

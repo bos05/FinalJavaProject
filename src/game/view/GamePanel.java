@@ -194,7 +194,14 @@ public class GamePanel extends JPanel implements Runnable
 		{
 			if(monster[i] != null)
 			{
-				monster[i].update(30, 4);
+				if(monster[i].alive == true)
+				{
+					monster[i].update(30, 4);
+				}
+				if(monster[i].alive == false && monster[i].dying == false)
+				{
+					monster[i] = null;
+				}
 			}
 		}
 
