@@ -1,5 +1,6 @@
 package game.model.monster;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -168,10 +169,39 @@ public class Slime extends Entity
 				break;
 			}
 			
+			if(type == 2 && hpBarOn)
+			{
+				double oneScale = (double)gp.tileSize/maxLife;
+				double hpBarValue = oneScale*life;
+				
+				g2.setColor(new Color(40, 11, 11));
+				g2.fillRect(screenX-1, screenY-16, gp.tileSize+2, 12);
+				
+				g2.setColor(new Color(105, 25, 25));
+				g2.fillRect(screenX,  screenY - 15,  (int)hpBarValue,  10);
+				
+				hpBarCounter++;
+				
+				if(hpBarCounter > 600)
+				{
+					hpBarCounter = 0;
+					hpBarOn = false;
+				}
+			}
+			
+			if(invincible == true)
+			{
+				hpBarCounter = 0;
+				hpBarOn = true;
+				changeAlpha(g2, 0.4f);
+			}
+			
 			if(dying == true)
 			{
 				dyingAnimation(g2);
 			}
+			
+			
 			
 		g2.drawImage(image, screenX, screenY, 48, 48, null);
 		}

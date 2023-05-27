@@ -37,8 +37,10 @@ public class Entity
 	public boolean attacking = false;
 	public boolean alive = true;
 	public boolean dying = false;
+	public boolean hpBarOn = false;
 	public int invincibleCounter = 0;
 	public int actionLockCounter = 0;
+	public int hpBarCounter = 0;
 	public int dyingCounter = 0;
 	public BufferedImage image, image2, image3;
 	public boolean collision  = false;
@@ -214,14 +216,14 @@ public class Entity
 		int i = 5;
 		
 		if(dyingCounter <= i){changeAlpha(g2, 0f);}
-		if(dyingCounter > i*2 && dyingCounter <= i*2){changeAlpha(g2, 1f);}
-		if(dyingCounter > i*3 && dyingCounter <= i*3){changeAlpha(g2, 0f);}
-		if(dyingCounter > i*4 && dyingCounter <= i*4){changeAlpha(g2, 1f);}
-		if(dyingCounter > i*5 && dyingCounter <= i*5){changeAlpha(g2, 0f);}
-		if(dyingCounter > i*6 && dyingCounter <= i*6){changeAlpha(g2, 1f);}
-		if(dyingCounter > i*7 && dyingCounter <= i*7){changeAlpha(g2, 0f);}
-		if(dyingCounter > i*8 && dyingCounter <= i*8){changeAlpha(g2, 1f);}
-		if(dyingCounter > i )
+		if(dyingCounter > i && dyingCounter <= i*2){changeAlpha(g2, 1f);}
+		if(dyingCounter > i*2 && dyingCounter <= i*3){changeAlpha(g2, 0f);}
+		if(dyingCounter > i*3 && dyingCounter <= i*4){changeAlpha(g2, 1f);}
+		if(dyingCounter > i*4 && dyingCounter <= i*5){changeAlpha(g2, 0f);}
+		if(dyingCounter > i*5 && dyingCounter <= i*6){changeAlpha(g2, 1f);}
+		if(dyingCounter > i*6 && dyingCounter <= i*7){changeAlpha(g2, 0f);}
+		if(dyingCounter > i*7 && dyingCounter <= i*8){changeAlpha(g2, 1f);}
+		if(dyingCounter > i*8 )
 		{
 			dying= false;
 			alive = false;
