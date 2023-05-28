@@ -2,6 +2,8 @@ package game.model;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import game.view.GamePanel;
 /**
  * The KeyHandler class is in charge of handling inputs
  * @author blin2710
@@ -9,8 +11,14 @@ import java.awt.event.KeyListener;
  */
 public class KeyHandler implements KeyListener
 {
+	GamePanel gp;
 	public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
 	
+	
+	public KeyHandler(GamePanel gp)
+	{
+		this.gp = gp;
+	}
 	/**
 	 * KeyTyped constructor
 	 */
@@ -40,6 +48,13 @@ public class KeyHandler implements KeyListener
 		if(code == KeyEvent.VK_D)
 		{
 			rightPressed = true;
+		}
+		if(code == KeyEvent.VK_P)
+		{
+			if(gp.gameState == gp.playState) {gp.gameState = gp.pauseState;}
+			else if(gp.gameState == gp.pauseState) {gp.gameState = gp.playState;}
+			System.out.println("TAB");
+				
 		}
 		if(code == KeyEvent.VK_ENTER)
 		{

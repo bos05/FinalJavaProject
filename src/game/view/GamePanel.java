@@ -65,11 +65,14 @@ public class GamePanel extends JPanel implements Runnable
 	
 	
 	// set player's default position
-	
 	int playerX = 100;
 	int playerY = 100;
 	double playerSpeed = 4;
 	
+	// GAME STATE
+	public int gameState;
+	public final int playState = 1;
+	public final int pauseState = 2;
 	
 	/**
 	 * Constructor for the GamePanel class
@@ -83,7 +86,7 @@ public class GamePanel extends JPanel implements Runnable
 		//initialing these in the constructor is much better that before it
 		//this way we are able to know if they are actually initialized
 		tileM = new TileManager(this);
-		keyH = new KeyHandler();
+		keyH = new KeyHandler(this);
 		cChecker = new CollisionChecker(this);
 		aSetter = new AssetSetter(this);
 		ui = new UI(this);
@@ -115,6 +118,7 @@ public class GamePanel extends JPanel implements Runnable
 	{
 		aSetter.setObject();
 		aSetter.setMonster();
+		gameState = playState;
 	}
 	
 	/**
@@ -187,26 +191,30 @@ public class GamePanel extends JPanel implements Runnable
 	 */
 	public void update()
 	{
-		player.update();
-		
-		
-		for(int i = 0; i < monster.length;i ++)
+		if (gameState == playState) 
 		{
-			if(monster[i] != null)
+			player.update();
+			
+			for (int i = 0; i < monster.length; i++) 
 			{
-				if(monster[i].alive == true)
+				if (monster[i] != null) 
 				{
-					monster[i].update(30, 4);
-				}
-				if(monster[i].alive == false && monster[i].dying == false)
-				{
-					monster[i] = null;
+					if (monster[i].alive == true)
+					{
+						monster[i].update(30, 4);
+						System.out.println("HAHAH");
+					} else
+					{
+						monster[i] = null;
+					}
 				}
 			}
 		}
-
-		
+		if (gameState == pauseState) {
+			// Handle pause state
+		}
 	}
+
 	
 	/**
 	 * this method is in charge of repainting all of the things 

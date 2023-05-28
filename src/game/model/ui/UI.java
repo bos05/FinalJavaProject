@@ -47,9 +47,38 @@ public class UI
 	    this.g2 = g2; // Initialize the g2 instance variable
 	    g2.setFont(arial40);
 	    g2.setColor(Color.WHITE);
+	    
+	    if(gp.gameState == gp.playState)
+	    {
+	    	
+	    }
+	    if(gp.gameState == gp.pauseState)
+	    {
+	    	drawPauseScreen();
+	    }
 	    drawPlayerLife();
 	}
+	
+	public void drawPauseScreen()
+	{
+		String text = "PAUSE";
+		int x = getXforCenteredText(text);
+		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+		x= gp.screenWidth/2 - length/2;
+		
+		int y = gp.screenHeight/2;
+		
+		g2.drawString(text,  x,  y);
+	}
+	
+	public int getXforCenteredText(String text)
+	{
+		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
+		int x= gp.screenWidth/2 - length/2;
+		
+		return x;
 
+	}
 	
 	public void drawPlayerLife()
 	{
