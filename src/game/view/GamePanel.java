@@ -71,6 +71,7 @@ public class GamePanel extends JPanel implements Runnable
 	
 	// GAME STATE
 	public int gameState;
+	public final int titleState = 0;
 	public final int playState = 1;
 	public final int pauseState = 2;
 	
@@ -118,7 +119,7 @@ public class GamePanel extends JPanel implements Runnable
 	{
 		aSetter.setObject();
 		aSetter.setMonster();
-		gameState = playState;
+		gameState = titleState;
 	}
 	
 	/**
@@ -202,7 +203,6 @@ public class GamePanel extends JPanel implements Runnable
 					if (monster[i].alive == true)
 					{
 						monster[i].update(30, 4);
-						System.out.println("HAHAH");
 					} else
 					{
 						monster[i] = null;
@@ -226,55 +226,63 @@ public class GamePanel extends JPanel implements Runnable
 		Graphics2D g2 = (Graphics2D)g;
 		
 		
-		
-		//order is important on wich is drawn first
-		tileM.draw(g2);
-		
-		//BOTTOM RENDER
-		for(int i = 0; i < landmark.length; i++)
+		if (gameState == titleState)
 		{
-			if(landmark[i] != null)
-			{
-				entityList.add(landmark[i]);
-			}
+			ui.draw(g2);
 		}
-		
-		entityList.add(player);
-		
-		for(int i = 0; i < monster.length; i++)
+		else 
 		{
-			if(monster[i] != null)
+			//order is important on wich is drawn first
+			tileM.draw(g2);
+			
+			//BOTTOM RENDER
+			for(int i = 0; i < landmark.length; i++)
 			{
-				entityList.add(monster[i]);
+				if(landmark[i] != null)
+				{
+					entityList.add(landmark[i]);
+				}
 			}
-		}
-		
-		
-		//TOP RENDER
-		
-		
-		//sort
-		Collections.sort(entityList, new Comparator<Entity>()
-		{
-			@Override
-			public int compare(Entity e1, Entity e2)
+			
+			entityList.add(player);
+			
+			for(int i = 0; i < monster.length; i++)
 			{
-				int result = Integer.compare(e1.worldY, e2.worldY);
-				return 0;
+				if(monster[i] != null)
+				{
+					entityList.add(monster[i]);
+				}
 			}
-		});
+			
+			
+			//TOP RENDER
+			
+			
+			//sort
+			Collections.sort(entityList, new Comparator<Entity>()
+			{
+				@Override
+				public int compare(Entity e1, Entity e2)
+				{
+					int result = Integer.compare(e1.worldY, e2.worldY);
+					return 0;
+				}
+			});
 
-		//draw entities
-		for(int i = 0 ; i < entityList.size(); i++)
-		{
-			entityList.get(i).draw(g2);
+			//draw entities
+			for(int i = 0 ; i < entityList.size(); i++)
+			{
+				entityList.get(i).draw(g2);
+			}
+			ui.draw(g2);
+			
+			//empty list
+			entityList.clear();
+			
+			g2.dispose();
 		}
-		ui.draw(g2);
 		
-		//empty list
-		entityList.clear();
 		
-		g2.dispose();
 	}
 	/**
 	 * calls saveTextToFile

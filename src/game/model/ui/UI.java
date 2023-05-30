@@ -2,8 +2,11 @@ package game.model.ui;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
 
 import game.model.entity.Entity;
 import game.model.object.HeartObject;
@@ -17,7 +20,8 @@ public class UI
 {
 	GamePanel gp;
 	Graphics2D g2;
-	Font arial40;
+	Font maruMonica;
+	public int commandNum = 0;
 	
 	
 	BufferedImage heart_full, heart_half, heart_blank;
@@ -29,7 +33,18 @@ public class UI
 	public UI(GamePanel gp)
 	{
 		this.gp = gp;
-		arial40 = new Font("Arial", Font.PLAIN, 40);
+		
+		try {
+			InputStream is = getClass().getResourceAsStream("/fonts/x12y16pxMaruMonica.ttf");
+			maruMonica = Font.createFont(Font.TRUETYPE_FONT, is);
+		}
+		catch(FontFormatException e){
+			e.printStackTrace();
+		}
+		catch(IOException e) {
+			e.printStackTrace();
+		}
+		
 		
 		//CREATE HUD OBJECTS
 		Entity heart = new HeartObject(gp);
@@ -45,22 +60,80 @@ public class UI
 	public void draw(Graphics2D g2)
 	{
 	    this.g2 = g2; // Initialize the g2 instance variable
-	    g2.setFont(arial40);
+	    g2.setFont(maruMonica);
 	    g2.setColor(Color.WHITE);
 	    
+	    if(gp.gameState == gp.titleState)
+	    {
+	    	drawTitleScreen();
+	    }
 	    if(gp.gameState == gp.playState)
 	    {
-	    	
+	    	drawPlayerLife();
 	    }
 	    if(gp.gameState == gp.pauseState)
 	    {
 	    	drawPauseScreen();
+	    	
 	    }
-	    drawPlayerLife();
+	    
+	}
+	
+	public void drawTitleScreen()
+	{
+		
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 96f));
+		String text = "TITLE TBD :D";
+		int x = getXforCenteredText(text);
+		int y = gp.tileSize*3;
+		//SHADOW
+		g2.setColor(new Color(105, 25, 25));
+		g2.drawString(text, x+5, y+5);
+		//MAIN TEXT
+		g2.setColor(Color.white);
+		g2.drawString(text,  x,  y);
+		
+		//PLAYER
+		x = gp.screenWidth/2 - (gp.tileSize*2)/2;
+		y += gp.tileSize+2;
+		g2.drawImage(gp.player.down1, x, y,  gp.tileSize*2,  gp.tileSize*2, null);
+		
+		//MENU
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 48f));
+		
+		text = "NEW GAME";
+		x = getXforCenteredText(text);
+		y += gp.tileSize * 3;
+		g2.drawString(text, x, y);
+		if(commandNum == 0)
+		{
+			g2.drawString(">", x-gp.tileSize, y);
+		}
+		
+		text = "LOAD GAME";
+		x = getXforCenteredText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y);
+		if(commandNum == 1)
+		{
+			g2.drawString(">", x-gp.tileSize, y);
+		}
+		
+		text = "QUIT";
+		x = getXforCenteredText(text);
+		y += gp.tileSize;
+		g2.drawString(text, x, y);
+		if(commandNum == 2)
+		{
+			g2.drawString(">", x-gp.tileSize, y);
+		}
+		
+		
 	}
 	
 	public void drawPauseScreen()
 	{
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 80f));
 		String text = "PAUSE";
 		int x = getXforCenteredText(text);
 		int length = (int)g2.getFontMetrics().getStringBounds(text, g2).getWidth();
