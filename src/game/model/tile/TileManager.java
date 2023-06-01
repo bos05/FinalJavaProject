@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 
 import javax.imageio.ImageIO;
 
+import game.model.UtilityTool;
 import game.view.GamePanel;
 /**
  * this class displays the tiles that make up the background
@@ -32,7 +33,7 @@ public class TileManager
 		
 			
 		getTileImage();
-		loadMap("/maps/map_1.txt");
+		loadMap("/maps/overworld_map_1.txt");
 	}
 	/**
 	 * In this method is am loading the tiles onto the tile ArrayList
@@ -41,26 +42,6 @@ public class TileManager
 	{
 		try
 		{
-			tile[0] = new Tile();
-			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_grass_1.png"));
-			
-			
-			tile[1] = new Tile();
-			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_grass_2.png"));
-			
-			tile[2] = new Tile();
-			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/water_grass_down.png"));
-
-			tile[3] = new Tile();
-			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_bricks_1.png"));
-			tile[3].collision = true;
-			
-			tile[4] = new Tile();
-			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_water_1.png"));
-			
-			tile[5] = new Tile();
-			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/body_dirt_1.png"));
-			
 
 		}
 		catch(IOException e)
@@ -73,6 +54,22 @@ public class TileManager
 	 * figures out what tile is in what spot
 	 * @param filePath
 	 */
+	
+	public void setup(int index, String imagePath, boolean collision)
+	{
+		UtilityTool uTool = new UtilityTool();
+		
+		try {
+			tile[index] = new Tile();
+			tile[index].image = ImageIO.read(getClass().getResourceAsStream("/tiles/"+ imagePath + ".png"));
+			tile[index].image = uTool.scaleImage(tile[index].image, gp.tileSize, gp.tileSize);
+			tile[index].collision = collision;
+		} 
+		catch(IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
 	public void loadMap(String filePath)
 	{
 		try
@@ -89,7 +86,7 @@ public class TileManager
 				
 				while(col < gp.maxWorldCol)
 				{
-					String numbers[] = line.split(" ");
+					String numbers[] = line.split(",");
 					
 					int num = Integer.parseInt(numbers[col]);
 					
