@@ -37,10 +37,7 @@ public class EventHandler
 	 */
 	public void checkEvent()
 	{
-//		if(hit(2, 2, "any") == true)
-//		{
-//			gp.player.life -= 1;
-//		}
+
 	}
 	/**
 	 * checks for interaction of something to see if there is collision/interacts with zone
