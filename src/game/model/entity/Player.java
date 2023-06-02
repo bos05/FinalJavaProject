@@ -58,8 +58,8 @@ public class Player extends Entity
 	{
 		//not where player is drawn on screen 
 		//this is where they are in terms of the map
-		worldX = (gp.maxWorldRow * gp.tileSize)/2;
-		worldY = (gp.maxWorldCol * gp.tileSize)/2;
+		worldX = (gp.tileSize * 8);
+		worldY = (gp.tileSize * 8);
 		speed = 4;
 		direction = "down";
 		
