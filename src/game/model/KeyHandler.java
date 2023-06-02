@@ -13,6 +13,7 @@ public class KeyHandler implements KeyListener
 {
 	GamePanel gp;
 	public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
+	//public boolean upRightPressed, upLeftPressed, downLeftPressed, downRightPressed;
 	
 	
 	public KeyHandler(GamePanel gp)
@@ -95,6 +96,7 @@ public class KeyHandler implements KeyListener
 		{
 			enterPressed = true;
 		}
+
 	}
 	/**
 	 * this detects keys released

@@ -113,22 +113,16 @@ public class Player extends Entity
 		if(!attacking) {
 		if(keyH.upPressed == true || keyH.downPressed == true || keyH.leftPressed == true || keyH.rightPressed == true || keyH.enterPressed == true)
 		{
-			if(keyH.upPressed == true)
-			{
-				direction = "up";		
-			}
-			else if(keyH.downPressed == true)
-			{
-				direction= "down";
-			}
-			else if(keyH.leftPressed == true)
-			{
-				direction = "left";
-			}
-			else if(keyH.rightPressed == true)
-			{
-				direction = "right";
-			}
+			if(keyH.upPressed == true){direction = "up";}
+			if(keyH.downPressed == true){direction= "down";}
+			if(keyH.leftPressed == true){direction = "left";}
+			if(keyH.rightPressed == true){direction = "right";}
+			if(keyH.rightPressed == true && keyH.upPressed == true){direction = "upRight";}
+			if(keyH.leftPressed == true && keyH.upPressed == true){direction = "upLeft";}
+			if(keyH.leftPressed == true && keyH.downPressed == true){direction = "downLeft";}
+			if(keyH.rightPressed == true && keyH.downPressed == true){direction = "downRight";}
+			
+			 
 			
 			
 			//CHECK TILE COLLISION
@@ -159,6 +153,22 @@ public class Player extends Entity
 					break;
 				case "right":
 					worldX += speed;
+					break;
+				case "upRight":
+					worldX += speed * .714;
+					worldY -= speed * .714;
+					break;
+				case "upLeft":
+					worldX -= speed * .714;
+					worldY -= speed * .714;
+					break;
+				case "downLeft":
+					worldX -= speed * .714;
+					worldY += speed * .714;
+					break;
+				case "downRight":
+					worldX += speed * .714;
+					worldY += speed * .714;
 					break;
 				
 					
@@ -192,7 +202,8 @@ public class Player extends Entity
 					invincible = false;
 					invincibleCounter = 0;
 				}
-			}}
+			}
+			}
 			
 	}
 	
@@ -362,6 +373,63 @@ public class Player extends Entity
 				if(spriteNum == 2) {image = attackRight2;}
 			}
 			break;
+		case "upRight":
+			if(attacking == false)
+			{
+				if(spriteNum == 1) {image = up1;}
+				if(spriteNum == 2) {image = up2;}
+			}
+			else if(attacking == true)
+			{
+				tempScreenY = screenY - gp.tileSize;
+				if(spriteNum == 1) {image = attackUp1;}
+				if(spriteNum == 2) {image = attackUp2;}
+			}
+			break;
+		case "upLeft":
+			if(attacking == false)
+			{
+				if(spriteNum == 1) {image = up1;}
+				if(spriteNum == 2) {image = up2;}
+			}
+			else if(attacking == true)
+			{
+				tempScreenY = screenY - gp.tileSize;
+				if(spriteNum == 1) {image = attackUp1;}
+				if(spriteNum == 2) {image = attackUp2;}
+			}
+			break;
+		case "downLeft":
+			if(attacking == false)
+			{
+				if(spriteNum == 1) {image = down1;}
+				if(spriteNum == 2) {image = down2;}
+
+			}
+			
+			else if(attacking == true)
+			{
+				tempScreenY = screenY - (gp.scale * 7);
+				if(spriteNum == 1) {image = attackDown1;}
+				
+				if(spriteNum == 2) {image = attackDown2;}
+			}
+			break;
+		case "downRight":
+			if(attacking == false)
+			{
+				if(spriteNum == 1) {image = down1;}
+				if(spriteNum == 2) {image = down2;}
+
+			}
+			
+			else if(attacking == true)
+			{
+				tempScreenY = screenY - (gp.scale * 7);
+				if(spriteNum == 1) {image = attackDown1;}
+				
+				if(spriteNum == 2) {image = attackDown2;}
+			}
 		}
 		g2.drawImage(image, tempScreenX, tempScreenY, null);
 	}
