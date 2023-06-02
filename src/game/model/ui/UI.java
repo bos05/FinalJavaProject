@@ -70,6 +70,7 @@ public class UI
 	    if(gp.gameState == gp.playState)
 	    {
 	    	drawPlayerLife();
+	    	drawPlayerCoordinates();
 	    }
 	    if(gp.gameState == gp.pauseState)
 	    {
@@ -184,5 +185,24 @@ public class UI
 			i++;
 			x += gp.tileSize;
 		}
+	}
+	
+	public void drawPlayerCoordinates()
+	{
+		g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40f));
+		int playerX = (gp.player.worldX) / gp.tileSize;
+		int playerY = (gp.player.worldY) / gp.tileSize;
+		
+		int xX = gp.tileSize * 1;
+		int yX = gp.tileSize * 2;
+		
+		int xY = gp.tileSize * 1;
+		int yY = gp.tileSize * 3;
+		
+		g2.drawString(String.valueOf(playerX), xX, yX);
+
+		g2.drawString(String.valueOf(playerY), xY, yY);
+
+		
 	}
 }

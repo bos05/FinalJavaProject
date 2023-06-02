@@ -126,8 +126,8 @@ public class TileManager
 		setup(57, "tree_24" , true);
 		setup(58, "tree_25" , true);
 		setup(59, "tree_26" , true);
-		setup(60, "tree_27" , true);
-		setup(61, "tree_28" , true);
+		setup(62, "tree_27" , true);
+		setup(63, "tree_28" , true);
 		
 		//GRASS
 		setup(20, "grass_01", false);
