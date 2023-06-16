@@ -12,6 +12,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import game.model.KeyHandler;
+import game.model.object.OBJ_Base_Katana;
+import game.model.object.OBJ_Wood_Shield;
 
 /**
  * The Player class is does all the things 
@@ -27,6 +29,7 @@ public class Player extends Entity
 	
 	public final int screenX;
 	public final int screenY;
+
 	/**
 	 * this is the constructor of Player class
 	 * @param gp
@@ -64,9 +67,25 @@ public class Player extends Entity
 		direction = "down";
 		
 		//PLAYER STATUS
+		level = 1;
 		maxLife = 6;
 		life = maxLife;
+		strength = 1;//damage affecting
+		dexterity = 1;//defense affecting
+		exp = 0;
+		nextLevelExp = 5;
+		coin = 0;
+		currentWeapon = new OBJ_Base_Katana(gp);
+		currentShield = new OBJ_Wood_Shield(gp);
+		attack = getAttack();
+		defense = getDefense();
+	}
+	public int getAttack() {
+		return attack = strength * currentWeapon.attackValue;
 		
+	}
+	public int getDefense() {
+		return defense = dexterity * currentShield.defenseValue;
 	}
 	/**
 	 * sets the players assets

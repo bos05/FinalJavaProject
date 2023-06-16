@@ -34,41 +34,60 @@ public class KeyHandler implements KeyListener
 	public void keyPressed(KeyEvent e) {
 		int code = e.getKeyCode();//returns integer keyCode associated with the key pressed
 		
-		if(gp.gameState == gp.titleState)
+		if (gp.gameState == gp.titleState)
 		{
-			if(code == KeyEvent.VK_W)
+			titleState(code);
+		}
+		else if(gp.gameState == gp.playState)
+		{
+			playState(code);
+		}
+		else if (gp.gameState == gp.pauseState)
+		{
+			pauseState(code);
+		}
+		else if(gp.gameState == gp.characterState)
+		{
+			characterState(code);
+		}
+				
+	}
+	public void titleState(int code)
+	{
+		if(code == KeyEvent.VK_W)
+		{
+			gp.ui.commandNum--;
+			if(gp.ui.commandNum < 0)
 			{
-				gp.ui.commandNum--;
-				if(gp.ui.commandNum < 0)
-				{
-					gp.ui.commandNum = 2;
-				}
-			}
-			if(code == KeyEvent.VK_S)
-			{
-				gp.ui.commandNum++;
-				if(gp.ui.commandNum > 2)
-				{
-					gp.ui.commandNum = 0;
-				}
-			}
-			if(code == KeyEvent.VK_ENTER)
-			{
-				if(gp.ui.commandNum == 0)
-				{
-					gp.gameState = gp.playState;
-				}
-				if(gp.ui.commandNum == 1)
-				{
-					//later
-				}
-				if(gp.ui.commandNum == 2)
-				{
-					System.exit(0);
-				}
+				gp.ui.commandNum = 2;
 			}
 		}
-		
+		if(code == KeyEvent.VK_S)
+		{
+			gp.ui.commandNum++;
+			if(gp.ui.commandNum > 2)
+			{
+				gp.ui.commandNum = 0;
+			}
+		}
+		if(code == KeyEvent.VK_ENTER)
+		{
+			if(gp.ui.commandNum == 0)
+			{
+				gp.gameState = gp.playState;
+			}
+			if(gp.ui.commandNum == 1)
+			{
+				//later
+			}
+			if(gp.ui.commandNum == 2)
+			{
+				System.exit(0);
+			}
+		}
+	}
+	public void playState(int code)
+	{
 		if(code == KeyEvent.VK_W)
 		{
 			upPressed = true;
@@ -87,17 +106,39 @@ public class KeyHandler implements KeyListener
 		}
 		if(code == KeyEvent.VK_P)
 		{
-			if(gp.gameState == gp.playState) {gp.gameState = gp.pauseState;}
-			else if(gp.gameState == gp.pauseState) {gp.gameState = gp.playState;}
-			System.out.println("TAB");
+			gp.gameState = gp.pauseState;
 				
 		}
 		if(code == KeyEvent.VK_ENTER)
 		{
 			enterPressed = true;
 		}
+		if(code == KeyEvent.VK_C)
+		{
+			gp.gameState = gp.characterState;
+			
+		}
 
 	}
+	public void pauseState(int code)
+	{
+		if(code == KeyEvent.VK_P)
+		{
+			gp.gameState = gp.characterState;
+		}
+
+				
+		
+	}
+	public void characterState(int code)
+	{
+		if(code == KeyEvent.VK_C)
+		{
+			gp.gameState = gp.playState;
+		}
+	}
+
+	
 	/**
 	 * this detects keys released
 	 */

@@ -9,6 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import game.model.UtilityTool;
+import game.model.object.OBJ_Wood_Shield;
 import game.view.GamePanel;
 /**
  * this is the superclass to a tone of other classes
@@ -54,6 +55,19 @@ public class Entity
 	public String name;
 	public int speed;
 	public int type;// 0 = player, 1 = monster
+	public int level;
+	public int strength;
+	public int dexterity;
+	public int attack;
+	public int defense;
+	public int exp;
+	public int nextLevelExp;
+	public int coin;
+	public Entity currentWeapon;
+	public Entity currentShield;
+	
+	public int attackValue;
+	public int defenseValue;
 	
 
 
