@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import game.model.KeyHandler;
 import game.model.object.OBJ_Sakura_Katana;
 import game.model.object.OBJ_Basic_Armor_Piece;
+import game.model.object.OBJ_Key;
 
 /**
  * The Player class is does all the things 
@@ -97,6 +98,7 @@ public class Player extends Entity
 	{
 		inventory.add(currentWeapon);
 		inventory.add(currentShield);
+		inventory.add(new OBJ_Key(gp));
 		
 		
 	}
@@ -160,6 +162,10 @@ public class Player extends Entity
 			//CHECK TILE COLLISION
 			collisionOn = false;
 			gp.cChecker.checkTile(this);
+			
+			//CHECK OBJECT COLLISION
+			int objIndex = gp.cChecker.checkObject(this, true);
+			pickupObject(objIndex);
 			
 			//CHECK MONSTER COLLISION
 			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
@@ -240,6 +246,7 @@ public class Player extends Entity
 	}
 	
 	public void attacking()
+
 	{
 		spriteCounter++;
 		
@@ -285,6 +292,16 @@ public class Player extends Entity
 
 		}
 
+	}
+	
+	public void pickupObject(int i){
+		if(i != 999){
+			if (inventory.size() != maxInventorySize) {
+				
+				inventory.add(gp.obj[i]);
+				gp.obj[i] = null;
+			}
+		}
 	}
 	
 	public void attack(int i)

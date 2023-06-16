@@ -57,6 +57,7 @@ public class GamePanel extends JPanel implements Runnable
 	public UI ui;
 	public EventHandler eHandler;
 	public Player player;
+	public Entity obj[];
 	public Entity landmark[];
 	public Entity monster[];
 	public IOController fileIO;
@@ -94,6 +95,7 @@ public class GamePanel extends JPanel implements Runnable
 		ui = new UI(this);
 		eHandler = new EventHandler(this);
 		player = new Player(this,keyH);
+		obj = new Entity[20];
 		landmark = new Entity[10];
 		monster = new Entity[20];
 		entityList = new ArrayList<>();
@@ -119,6 +121,7 @@ public class GamePanel extends JPanel implements Runnable
 	public void setupGame()
 	{
 		aSetter.setObject();
+		aSetter.setLandmark();
 		aSetter.setMonster();
 		gameState = titleState;
 	}
@@ -242,6 +245,13 @@ public class GamePanel extends JPanel implements Runnable
 				if(landmark[i] != null)
 				{
 					entityList.add(landmark[i]);
+				}
+			}
+			for(int i = 0; i < obj.length; i++)
+			{
+				if(obj[i] != null)
+				{
+					entityList.add(obj[i]);
 				}
 			}
 			
