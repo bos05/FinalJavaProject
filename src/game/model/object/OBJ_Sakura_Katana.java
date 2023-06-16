@@ -10,9 +10,10 @@ public class OBJ_Sakura_Katana extends Entity
 	{
 		super(gp);
 		
-		name = "Base Katana";
-		down1 = setup("/objects/sakura_katana", gp.tileSize - 16, gp.tileSize - 16);
+		name = "Sakura Katana";
+		down1 = setup("/objects/sakura_katana", gp.tileSize - 6, gp.tileSize - 6);
 		attackValue = 1;
+		itemDescription = "[" + name + "]" + "\nSword with pink sakura \nblade";
 	}
 
 }

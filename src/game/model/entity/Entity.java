@@ -66,8 +66,10 @@ public class Entity
 	public Entity currentWeapon;
 	public Entity currentShield;
 	
+	//ITEM VALUES
 	public int attackValue;
 	public int defenseValue;
+	public String itemDescription = "";
 	
 
 

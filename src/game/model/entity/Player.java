@@ -8,6 +8,7 @@ import java.awt.Rectangle;
 import java.awt.RenderingHints.Key;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
@@ -29,7 +30,8 @@ public class Player extends Entity
 	
 	public final int screenX;
 	public final int screenY;
-
+	public ArrayList<Entity> inventory;
+	public final int maxInventorySize = 20;
 	/**
 	 * this is the constructor of Player class
 	 * @param gp
@@ -40,6 +42,8 @@ public class Player extends Entity
 		super(gp);
 		
 		this.keyH = keyH;
+		
+		inventory = new ArrayList<>();
 		
 		screenX = gp.screenWidth/2 - (35);
 		screenY = gp.screenHeight/2 - (55);
@@ -53,6 +57,7 @@ public class Player extends Entity
 		setDefaultValues();
 		getPlayerImage();
 		getPlayerAttackImage();
+		setItems();
 	}
 	/**
 	 * sets default variables for the player class
@@ -86,6 +91,14 @@ public class Player extends Entity
 	}
 	public int getDefense() {
 		return defense = dexterity * currentShield.defenseValue;
+	}
+	
+	public void setItems()
+	{
+		inventory.add(currentWeapon);
+		inventory.add(currentShield);
+		
+		
 	}
 	/**
 	 * sets the players assets
