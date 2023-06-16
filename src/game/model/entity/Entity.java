@@ -9,7 +9,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import game.model.UtilityTool;
-import game.model.object.OBJ_Wood_Shield;
+import game.model.object.OBJ_Basic_Armor_Piece;
 import game.view.GamePanel;
 /**
  * this is the superclass to a tone of other classes

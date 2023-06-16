@@ -12,8 +12,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 import game.model.KeyHandler;
-import game.model.object.OBJ_Base_Katana;
-import game.model.object.OBJ_Wood_Shield;
+import game.model.object.OBJ_Sakura_Katana;
+import game.model.object.OBJ_Basic_Armor_Piece;
 
 /**
  * The Player class is does all the things 
@@ -75,8 +75,8 @@ public class Player extends Entity
 		exp = 0;
 		nextLevelExp = 5;
 		coin = 0;
-		currentWeapon = new OBJ_Base_Katana(gp);
-		currentShield = new OBJ_Wood_Shield(gp);
+		currentWeapon = new OBJ_Sakura_Katana(gp);
+		currentShield = new OBJ_Basic_Armor_Piece(gp);
 		attack = getAttack();
 		defense = getDefense();
 	}
