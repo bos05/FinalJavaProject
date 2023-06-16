@@ -296,7 +296,7 @@ public class Player extends Entity
 	
 	public void pickupObject(int i){
 		if(i != 999){
-			if (inventory.size() != maxInventorySize) {
+			if (inventory.size() < maxInventorySize) {
 				
 				inventory.add(gp.obj[i]);
 				gp.obj[i] = null;
