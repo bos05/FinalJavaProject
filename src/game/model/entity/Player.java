@@ -292,7 +292,12 @@ public class Player extends Entity
 		{
 			if(invincible == false)
 			{	
-				life -= 1;
+				int damage = gp.monster[i].attack - defense;
+				if (damage < 0) {
+					damage = 0;
+				}
+				
+				life -= damage;
 				invincible = true;
 				
 			}
@@ -305,7 +310,11 @@ public class Player extends Entity
 		{
 			if(gp.monster[i].invincible == false)
 			{
-				System.out.println("hit");
+				int damage = attack - gp.monster[i].defense;
+				if (damage < 0) {
+					damage = 0;
+				}
+				
 				gp.monster[i].life -= 1;
 				gp.monster[i].damageReaction();
 				gp.monster[i].invincible = true;
@@ -313,8 +322,24 @@ public class Player extends Entity
 				if(gp.monster[i].life <= 0)
 				{
 					gp.monster[i].dying = true;
+					exp += gp.monster[i].exp;
+					checkLevelUp();
 				}
 			}
+		}
+	}
+	public void checkLevelUp()
+	{
+		if(exp >= nextLevelExp)
+		{
+			level++;
+			nextLevelExp = nextLevelExp*2;
+			maxLife+=2;
+			strength++;
+			dexterity++;
+			attack = getAttack();
+			defense = getDefense();
+			
 		}
 	}
 	
