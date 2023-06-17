@@ -75,9 +75,10 @@ public class Entity
 	public final int type_player = 0;
 	public final int type_npc = 1;
 	public final int type_monster = 2;
-	public final int type_melee_weapon = 3;
-	public final int type_shield = 4;
-	public final int type_consumable = 5;
+	public final int sakura_katana = 3;
+	public final int woodcutters_axe = 4;
+	public final int type_shield = 5;
+	public final int consumable = 6;
 
 	
 
@@ -96,6 +97,7 @@ public class Entity
 	 */
 	public void setAction() {}
 	public void damageReaction() {}
+	public void use(Entity entity) {}
 	/**
 	 * this is the default update method if the
 	 *  subclass doens't require something special

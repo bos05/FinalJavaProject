@@ -6,6 +6,7 @@ import game.model.landmark.TempleLandmark;
 import game.model.monster.Slime;
 import game.model.object.OBJ_Basic_Axe;
 import game.model.object.OBJ_Key;
+import game.model.object.OBJ_Small_Health_Potion;
 import game.view.GamePanel;
 /**
  * This fills the arrays with the Entity objects
@@ -35,6 +36,10 @@ public class AssetSetter
 		i++;
 		gp.obj[i] = new OBJ_Basic_Axe(gp);
 		gp.obj[i].worldX = 15*gp.tileSize;
+		gp.obj[i].worldY = 10*gp.tileSize;
+		i++;
+		gp.obj[i] = new OBJ_Small_Health_Potion(gp);
+		gp.obj[i].worldX = 18*gp.tileSize;
 		gp.obj[i].worldY = 10*gp.tileSize;
 		
 		
