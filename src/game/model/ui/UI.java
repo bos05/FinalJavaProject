@@ -303,6 +303,7 @@ public class UI
 	
 	public void drawInventoryScreen()
 	{
+		
 		//FRAME
 		int frameX = gp.tileSize * 9;
 		int frameY = gp.tileSize;
@@ -319,6 +320,12 @@ public class UI
 		
 		//DRAW PLAYER'S ITEMS
 		for(int i = 0;i < gp.player.inventory.size(); i++){
+			//Equip cursor
+			if(gp.player.inventory.get(i) == gp.player.currentWeapon ||
+					gp.player.inventory.get(i) == gp.player.currentShield){
+				g2.setColor(new Color(45, 45, 45));
+				g2.fillRoundRect(slotX, slotY, gp.tileSize, gp.tileSize, 10 , 10);
+			}
 			g2.drawImage(gp.player.inventory.get(i).down1, slotX, slotY, null);
 			
 			slotX += slotSize;

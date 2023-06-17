@@ -51,9 +51,7 @@ public class Player extends Entity
 		
 		solidArea = new Rectangle(8, 16, 32, 36);
 		
-		attackArea.width = 36;
-		attackArea.height = 36;
-		
+
 		
 		setDefaultValues();
 		getPlayerImage();
@@ -87,6 +85,7 @@ public class Player extends Entity
 		defense = getDefense();
 	}
 	public int getAttack() {
+		attackArea = currentWeapon.attackArea;
 		return attack = strength * currentWeapon.attackValue;
 		
 	}
@@ -297,8 +296,6 @@ public class Player extends Entity
 	public void pickupObject(int i){
 		if(i != 999){
 			if (inventory.size() != maxInventorySize) {
-				
-				System.out.println("I'm in");
 				inventory.add(gp.obj[i]);
 				gp.obj[i] = null;
 			}
@@ -346,7 +343,7 @@ public class Player extends Entity
 					damage = 0;
 				}
 				
-				gp.monster[i].life -= 1;
+				gp.monster[i].life -= damage;
 				gp.monster[i].damageReaction();
 				gp.monster[i].invincible = true;
 				
@@ -354,7 +351,10 @@ public class Player extends Entity
 				{
 					gp.monster[i].dying = true;
 					exp += gp.monster[i].exp;
-					checkLevelUp();
+					while( nextLevelExp < exp)
+					{
+						checkLevelUp();
+					}
 				}
 			}
 		}
@@ -370,7 +370,27 @@ public class Player extends Entity
 			dexterity++;
 			attack = getAttack();
 			defense = getDefense();
+			life += 2;
 			
+		}
+	}
+	public void selectItem() {
+		int itemIndex = gp.ui.getItemIndexOnSlot();
+		
+		if(itemIndex < inventory.size()) {
+			Entity selectedItem = inventory.get(itemIndex);
+			
+			if(selectedItem.type == type_melee_weapon) {
+				currentWeapon = selectedItem;
+				attack = getAttack();
+			}
+			if(selectedItem.type == type_shield) {
+				currentShield = selectedItem;
+				defense = getDefense();
+			}
+			if(selectedItem.type == type_consumable) {
+				//later lol
+			}
 		}
 	}
 	

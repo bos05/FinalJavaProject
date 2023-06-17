@@ -30,13 +30,13 @@ public class Slime extends Entity
 	{
 		super(gp);
 		
-		type = 2;
+		type = type_monster;
 		speed = 1;
 		maxLife = 4;
 		life = maxLife;
 		attack = 3;
 		defense = 0;
-		exp = 2;
+		exp = 4;
 		
 		solidArea.x = 3;
 		solidArea.y = 3;
@@ -172,7 +172,7 @@ public class Slime extends Entity
 			}
 			
 
-			if(type == 2 && hpBarOn)
+			if(type == type_monster && hpBarOn)
 			{
 				double oneScale = (double)gp.tileSize/maxLife;
 				double hpBarValue = oneScale*life;

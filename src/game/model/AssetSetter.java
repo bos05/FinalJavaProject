@@ -4,6 +4,7 @@ import java.util.Random;
 
 import game.model.landmark.TempleLandmark;
 import game.model.monster.Slime;
+import game.model.object.OBJ_Basic_Axe;
 import game.model.object.OBJ_Key;
 import game.view.GamePanel;
 /**
@@ -29,7 +30,11 @@ public class AssetSetter
 	{
 		int i = 0;
 		gp.obj[i] = new OBJ_Key(gp);
-		gp.obj[0].worldX = 10*gp.tileSize;
+		gp.obj[i].worldX = 10*gp.tileSize;
+		gp.obj[i].worldY = 10*gp.tileSize;
+		i++;
+		gp.obj[i] = new OBJ_Basic_Axe(gp);
+		gp.obj[i].worldX = 15*gp.tileSize;
 		gp.obj[i].worldY = 10*gp.tileSize;
 		
 		

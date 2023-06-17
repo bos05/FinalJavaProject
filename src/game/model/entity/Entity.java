@@ -54,7 +54,6 @@ public class Entity
 	public int maxLife;
 	public String name;
 	public int speed;
-	public int type;// 0 = player, 1 = monster
 	public int level;
 	public int strength;
 	public int dexterity;
@@ -70,6 +69,16 @@ public class Entity
 	public int attackValue;
 	public int defenseValue;
 	public String itemDescription = "";
+	
+	//TYPE
+	public int type;// 0 = player, 1 = monster
+	public final int type_player = 0;
+	public final int type_npc = 1;
+	public final int type_monster = 2;
+	public final int type_melee_weapon = 3;
+	public final int type_shield = 4;
+	public final int type_consumable = 5;
+
 	
 
 
