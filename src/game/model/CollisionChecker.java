@@ -164,6 +164,7 @@ public class CollisionChecker
 					entity.solidArea.y -= entity.speed;
 					if(entity.solidArea.intersects(gp.obj[i].solidArea))
 					{
+						System.out.println("UP");
 						if(gp.obj[i].collision == true)
 						{
 							entity.collisionOn = true;
@@ -216,8 +217,16 @@ public class CollisionChecker
 						}
 					}
 					break;
+			
 				}
+				entity.solidArea.x = entity.solidAreaDefaultX;
+				entity.solidArea.y = entity.solidAreaDefaultY;
+				gp.obj[i].solidArea.x = gp.obj[i].solidAreaDefaultX;
+				gp.obj[i].solidArea.y = gp.obj[i].solidAreaDefaultY;
 			}
+			
+
+			
 		}
 		return index;
 	}
