@@ -12,7 +12,7 @@ import game.view.GamePanel;
 public class KeyHandler implements KeyListener
 {
 	GamePanel gp;
-	public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed;
+	public boolean upPressed, downPressed, leftPressed, rightPressed, enterPressed, shootKeyPressed;
 	//public boolean upRightPressed, upLeftPressed, downLeftPressed, downRightPressed;
 	
 	
@@ -113,6 +113,10 @@ public class KeyHandler implements KeyListener
 		{
 			enterPressed = true;
 		}
+		if(code == KeyEvent.VK_SPACE)
+		{
+			shootKeyPressed = true;
+		}
 		if(code == KeyEvent.VK_C)
 		{
 			gp.gameState = gp.characterState;
@@ -186,6 +190,15 @@ public class KeyHandler implements KeyListener
 		if(code == KeyEvent.VK_D)
 		{
 			rightPressed = false;
+		}
+		if(code == KeyEvent.VK_ENTER)
+		{
+			enterPressed = false;
+		}
+		if(code == KeyEvent.VK_SPACE)
+		{
+			System.out.println("released");
+			shootKeyPressed = false;
 		}
 		
 		

@@ -15,7 +15,7 @@ public class OBJ_Small_Health_Potion extends Entity {
 		
 		type = consumable;
 		name = "Small Health Potion";
-		down1 = setup("/objects/potion_red", gp.tileSize, gp.tileSize);
+		down1 = setup("/objects/small_health_potion", gp.tileSize, gp.tileSize);
 		itemDescription ="[" + name + "]\n" + "Heals " + value + " heal points";
 	}
 	public void use(Entity entity) {

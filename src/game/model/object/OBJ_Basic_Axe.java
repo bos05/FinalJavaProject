@@ -9,7 +9,7 @@ public class OBJ_Basic_Axe extends Entity{
 		super(gp);
 		type = woodcutters_axe;
 		name = "Woodcutters Axe";
-		down1 = setup("/objects/axe", gp.tileSize, gp.tileSize);
+		down1 = setup("/objects/woodcutters_axe", gp.tileSize, gp.tileSize);
 		attackValue= 2;
 		attackArea.width = 30;
 		attackArea.height = 30;

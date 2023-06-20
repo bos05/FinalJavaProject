@@ -217,6 +217,7 @@ public class CollisionChecker
 						}
 					}
 					break;
+					
 			
 				}
 				entity.solidArea.x = entity.solidAreaDefaultX;

@@ -32,7 +32,7 @@ public class GamePanel extends JPanel implements Runnable
 {
 	// screen settings 
 	final int originalTileSize = 16;// 16x16 titles
-	public int scale = 3;
+	public int scale =3;
 	
 	public final int tileSize = originalTileSize * scale;// actual tile size
 	public final int maxScreenCol = 16;
@@ -61,7 +61,7 @@ public class GamePanel extends JPanel implements Runnable
 	public Entity landmark[];
 	public Entity monster[];
 	public IOController fileIO;
-	
+	public ArrayList<Entity> projectileList;
 	ArrayList<Entity> entityList;
 	
 	
@@ -98,6 +98,7 @@ public class GamePanel extends JPanel implements Runnable
 		obj = new Entity[20];
 		landmark = new Entity[10];
 		monster = new Entity[20];
+		projectileList = new ArrayList<>();
 		entityList = new ArrayList<>();
 		fileIO = new IOController();
 		
@@ -213,6 +214,20 @@ public class GamePanel extends JPanel implements Runnable
 					}
 				}
 			}
+			for (int i = 0; i < projectileList.size(); i++) 
+			{
+				if (projectileList.get(i) != null) 
+				{
+					if (projectileList.get(i).alive == true)
+					{
+						projectileList.get(i).update(30, 4);
+					} 
+					if (projectileList.get(i).alive == false)
+					{
+						projectileList.remove(i);
+					}
+				}
+			}
 		}
 		if (gameState == pauseState) {
 			// Handle pause state
@@ -262,6 +277,13 @@ public class GamePanel extends JPanel implements Runnable
 				if(monster[i] != null)
 				{
 					entityList.add(monster[i]);
+				}
+			}
+			for(int i = 0; i < projectileList.size(); i++)
+			{
+				if(projectileList.get(i) != null)
+				{
+					entityList.add(projectileList.get(i));
 				}
 			}
 			

@@ -15,6 +15,7 @@ import javax.imageio.ImageIO;
 import game.model.KeyHandler;
 import game.model.object.OBJ_Sakura_Katana;
 import game.model.object.OBJ_Basic_Armor_Piece;
+import game.model.object.OBJ_Basic_Arrow;
 import game.model.object.OBJ_Key;
 
 /**
@@ -81,6 +82,7 @@ public class Player extends Entity
 		coin = 0;
 		currentWeapon = new OBJ_Sakura_Katana(gp);
 		currentShield = new OBJ_Basic_Armor_Piece(gp);
+		projectile = new OBJ_Basic_Arrow(gp);
 		attack = getAttack();
 		defense = getDefense();
 	}
@@ -243,6 +245,15 @@ public class Player extends Entity
 			}
 			}
 			
+			if(gp.keyH.shootKeyPressed == true && projectile.alive == false)
+			{
+				//SET DEFAULT COORDINATES, DIRECTION AND USER
+				projectile.set(worldX, worldY, direction, true, this);
+				
+				//ADD IT TO THE LIST
+				gp.projectileList.add(projectile);
+			}
+			
 			//NEEDS TO BE OUT OF KEY IF
 			if(invincible == true)
 			{
@@ -349,7 +360,7 @@ public class Player extends Entity
 	{
 		if(i != 999)
 		{
-			if(gp.monster[i].invincible == false)
+			if(gp.monster[i].invincible == false && gp.monster[i].dying == false)
 			{
 				int damage = attack - gp.monster[i].defense;
 				if (damage < 0) {
