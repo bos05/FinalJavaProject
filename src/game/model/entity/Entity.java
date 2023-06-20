@@ -43,6 +43,7 @@ public class Entity
 	public int actionLockCounter = 0;
 	public int hpBarCounter = 0;
 	public int dyingCounter = 0;
+	public int shootAvailableCounter = 0;
 	public BufferedImage image, image2, image3;
 	public boolean collision  = false;
 	int framesPerSprite = 0;

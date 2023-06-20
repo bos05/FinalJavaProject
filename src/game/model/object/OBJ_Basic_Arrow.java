@@ -12,7 +12,7 @@ public class OBJ_Basic_Arrow extends Projectile{
 		this.gp = gp;
 		
 		name = "Basic Arow";
-		speed = 10;
+		speed = 15;
 		maxLife = 80;
 		life  = maxLife;
 		attack = 2;

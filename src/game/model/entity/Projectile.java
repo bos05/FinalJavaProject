@@ -21,11 +21,12 @@ public class Projectile extends Entity {
 		
 	}
 	public void update(int haveTo, int haveThese) {
-		
+		System.out.println("test1");
 		if (user == gp.player) {
-			int monsterIndex = gp.cChecker.checkEntity(user, this.gp.monster);
+			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
 			if(monsterIndex != 999) {
-				gp.player.damageMonster(monsterIndex);
+				System.out.println("test fr hit");
+				gp.player.damageMonster(monsterIndex, attack);
 				alive = false;
 			}
 		}

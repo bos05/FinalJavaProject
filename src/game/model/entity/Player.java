@@ -245,13 +245,14 @@ public class Player extends Entity
 			}
 			}
 			
-			if(gp.keyH.shootKeyPressed == true && projectile.alive == false)
+			if(gp.keyH.shootKeyPressed == true &&	 projectile.alive == false && shootAvailableCounter == 30)
 			{
 				//SET DEFAULT COORDINATES, DIRECTION AND USER
 				projectile.set(worldX, worldY, direction, true, this);
 				
 				//ADD IT TO THE LIST
 				gp.projectileList.add(projectile);
+				shootAvailableCounter = 0;
 			}
 			
 			//NEEDS TO BE OUT OF KEY IF
@@ -263,6 +264,9 @@ public class Player extends Entity
 					invincible = false;
 					invincibleCounter = 0;
 				}
+			}
+			if (shootAvailableCounter < 30) {
+				shootAvailableCounter++;
 			}
 			}
 			
@@ -299,7 +303,7 @@ public class Player extends Entity
 			solidArea.height = attackArea.height;
 			//check monster collision with the update worldX, worldY, and solidArea
 			int monsterIndex = gp.cChecker.checkEntity(this, gp.monster);
-			damageMonster(monsterIndex);
+			damageMonster(monsterIndex, attack);
 			
 			worldX = currentWorldX;
 			worldY = currentWorldY;
@@ -356,7 +360,7 @@ public class Player extends Entity
 		}
 	}
 	
-	public void damageMonster(int i)
+	public void damageMonster(int i, int attack)
 	{
 		if(i != 999)
 		{
