@@ -3,6 +3,7 @@ package game.model;
 import java.util.Random;
 
 import game.model.landmark.TempleLandmark;
+import game.model.monster.Giant_Orange_Ranchu;
 import game.model.monster.Slime;
 import game.model.object.OBJ_Basic_Axe;
 import game.model.object.OBJ_Key;
@@ -59,6 +60,8 @@ public class AssetSetter
 	public void setMonster ()
 	{
 		int i = 0;
+		int x = 0;
+		int y = 0;
 		gp.monster[i] = new Slime(gp);
 		gp.monster[i].worldX = gp.tileSize * 40;
 		gp.monster[i].worldY = gp.tileSize * 20;
@@ -90,6 +93,10 @@ public class AssetSetter
 		gp.monster[i] = new Slime(gp);
 		gp.monster[i].worldX = gp.tileSize * 106;
 		gp.monster[i].worldY = gp.tileSize * 63;
+		i++;
+		gp.monster[i] = new Giant_Orange_Ranchu(gp);
+		gp.monster[i].worldX = gp.tileSize * x + 60;
+		gp.monster[i].worldY = gp.tileSize * y + 35;
 		
 
 		
