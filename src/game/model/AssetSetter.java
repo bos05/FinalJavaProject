@@ -60,8 +60,6 @@ public class AssetSetter
 	public void setMonster ()
 	{
 		int i = 0;
-		int x = 0;
-		int y = 0;
 		gp.monster[i] = new Slime(gp);
 		gp.monster[i].worldX = gp.tileSize * 40;
 		gp.monster[i].worldY = gp.tileSize * 20;
@@ -95,8 +93,8 @@ public class AssetSetter
 		gp.monster[i].worldY = gp.tileSize * 63;
 		i++;
 		gp.monster[i] = new Giant_Orange_Ranchu(gp);
-		gp.monster[i].worldX = gp.tileSize * x + 60;
-		gp.monster[i].worldY = gp.tileSize * y + 35;
+		gp.monster[i].worldX = gp.tileSize * 60;
+		gp.monster[i].worldY = gp.tileSize * 38;
 		
 
 		
